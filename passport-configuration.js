@@ -73,41 +73,41 @@ passport.use(
   })
 );
 
-passport.use(
-  'github',
-  new GitHubStrategy(
-    {
-      clientID: process.env.GITHUB_CLIENT_ID,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      callbackURL: 'http://localhost:3000/authentication/github-callback',
-      scope: 'user:email'
-    },
-    (accessToken, refreshToken, profile, callback) => {
-      const {
-        displayName: name,
-        emails,
-        photos: [{ value: photo } = {}] = []
-      } = profile;
-      const primaryEmail = emails.find(email => email.primary).value;
-      User.findOne({ email: primaryEmail })
-        .then(user => {
-          if (user) {
-            return Promise.resolve(user);
-          } else {
-            return User.create({
-              email: primaryEmail,
-              photo,
-              name,
-              githubToken: accessToken
-            });
-          }
-        })
-        .then(user => {
-          callback(null, user);
-        })
-        .catch(error => {
-          callback(error);
-        });
-    }
-  )
-);
+// passport.use(
+//   'github',
+//   new GitHubStrategy(
+//     {
+//       clientID: process.env.GITHUB_CLIENT_ID,
+//       clientSecret: process.env.GITHUB_CLIENT_SECRET,
+//       callbackURL: 'http://localhost:3000/authentication/github-callback',
+//       scope: 'user:email'
+//     },
+//     (accessToken, refreshToken, profile, callback) => {
+//       const {
+//         displayName: name,
+//         emails,
+//         photos: [{ value: photo } = {}] = []
+//       } = profile;
+//       const primaryEmail = emails.find(email => email.primary).value;
+//       User.findOne({ email: primaryEmail })
+//         .then(user => {
+//           if (user) {
+//             return Promise.resolve(user);
+//           } else {
+//             return User.create({
+//               email: primaryEmail,
+//               photo,
+//               name,
+//               githubToken: accessToken
+//             });
+//           }
+//         })
+//         .then(user => {
+//           callback(null, user);
+//         })
+//         .catch(error => {
+//           callback(error);
+//         });
+//     }
+//   )
+// );
