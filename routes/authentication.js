@@ -19,7 +19,7 @@ authenticationRouter.post(
   '/sign-up',
   // upload.single('photo'),
   passport.authenticate('local-sign-up', {
-    successRedirect: '/private',
+    successRedirect: '/',
     failureRedirect: '/sign-up'
   })
 );

@@ -1,38 +1,44 @@
 import React, { Component } from 'react';
-import { listPosts } from './../services/post';
-import PostItem from '../components/Post';
+// import { listProducts } from '../services/product';
+
+// import ProductItem from '../components/ProductItem';
 
 class HomeView extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      loaded: false,
-      posts: []
+      loaded: true,
+      products: []
     };
   }
 
   componentDidMount() {
-    listPosts()
-      .then(data => {
-        console.log(data);
-        const posts = data.posts;
-        console.log(posts);
-        this.setState({
-          posts,
-          loaded: true
-        });
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    // listProducts()
+    //   .then(data => {
+    //     const products = data.products;
+    //     this.setState({
+    //       loaded: true,
+    //       products
+    //     });
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //   });
   }
 
   render() {
     return (
-      <div className="post-list">
-        {this.state.posts.map(post => (
-          <PostItem {...post} key={post._id} />
-        ))}
+      <div>
+        Welcome you gambling degenerate
+        {/* <h1>List of products</h1>
+        {this.state.products.map(product => (
+          <ProductItem
+            key={product._id}
+            product={product}
+            basket={this.props.basket}
+            onChangeQuantity={this.props.onChangeQuantity}
+          />
+        ))} */}
       </div>
     );
   }

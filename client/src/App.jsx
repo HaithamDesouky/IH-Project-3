@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { loadMe, signOut } from './services/authentication';
 
-import HomeView from './views/HomeView';
+import NewsFeed from './views/NewsFeed';
 import SinglePostView from './views/Post/SingleView';
 import PostEditView from './views/Post/EditView';
 import PostCreationView from './views/Post/CreationView';
 import AuthenticationSignUpView from './views/Authentication/SignUpView';
 import AuthenticationSignInView from './views/Authentication/SignInView';
 import ErrorView from './views/ErrorView';
+import HomeView from './views/HomeView';
 
 import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -66,6 +67,8 @@ class App extends Component {
           {(this.state.loaded && (
             <Switch>
               <Route path="/" component={HomeView} exact />
+
+              <Route path="/news-feed" component={NewsFeed} exact />
               <ProtectedRoute
                 path="/post/create"
                 component={PostCreationView}
