@@ -12,7 +12,6 @@ const passport = require('passport');
 const serveFavicon = require('serve-favicon');
 const bindUserToViewLocals = require('./middleware/bind-user-to-view-locals.js');
 const passportConfigure = require('./passport-configuration.js');
-const indexRouter = require('./routes/index');
 const authenticationRouter = require('./routes/authentication');
 const postRouter = require('./routes/post');
 const cors = require('cors');
@@ -52,7 +51,6 @@ app.use(passport.session());
 app.use(bindUserToViewLocals);
 
 app.use('/post', postRouter);
-app.use('/', indexRouter);
 app.use('/authentication', authenticationRouter);
 
 // Catch missing routes and forward to error handler

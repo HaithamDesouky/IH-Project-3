@@ -57,6 +57,9 @@ passport.use(
       email
     })
       .then(document => {
+        if (!document) {
+          return Promise.reject(new Error("There's no user with that email."));
+        }
         user = document;
         return bcryptjs.compare(password, user.passwordHash);
       })

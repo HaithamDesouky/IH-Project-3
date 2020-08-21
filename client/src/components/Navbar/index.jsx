@@ -6,6 +6,7 @@ const Navbar = props => {
   return (
     <nav>
       <Link to="/">Project</Link>
+      <Link to="/shop">Shop</Link>
       <Link to="/post/create">Create a post</Link>
       {(props.user && (
         <>

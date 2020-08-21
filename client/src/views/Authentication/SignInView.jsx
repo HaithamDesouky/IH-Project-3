@@ -25,7 +25,9 @@ class AuthenticationSignInView extends Component {
     signIn(body)
       .then(data => {
         const { user } = data;
+        console.log(data);
         this.props.onUserUpdate(user);
+        this.props.history.push('/');
       })
       .catch(error => {
         const serverError = error.response.data.error;
@@ -59,7 +61,7 @@ class AuthenticationSignInView extends Component {
             value={this.state.password}
             onChange={this.handleInputChange}
             required
-            minLength="8"
+            minLength="1"
           />
 
           {this.state.error && (

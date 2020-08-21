@@ -17,7 +17,7 @@ const PostForm = props => {
   };
 
   return (
-    <form onSubmit={handleFormSubmission}>
+    <form onSubmit={handleFormSubmission} redirect="/">
       <label htmlFor="content-input">Post Content</label>
       <textarea
         id="content-input"

@@ -11,7 +11,7 @@ const ProtectedRoute = ({ authorized, redirect, ...props }) => {
         to="/"
         to={{
           pathname: '/error',
-          state: { message: 'gtfo bro sign yo bitch ass up' }
+          state: { message: 'You are not signed in.' }
         }}
       />
     );

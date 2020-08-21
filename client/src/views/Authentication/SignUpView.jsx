@@ -25,7 +25,9 @@ class AuthenticationSignUpView extends Component {
     signUp(body)
       .then(data => {
         const { user } = data;
+        console.log(data);
         this.props.onUserUpdate(user);
+        this.props.history.push('/');
       })
       .catch(error => {
         console.log(error);

@@ -7,6 +7,7 @@ const postSchema = new mongoose.Schema(
       required: true,
       ref: 'User'
     },
+    liked: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
     content: {
       type: String,
       minlength: 3,

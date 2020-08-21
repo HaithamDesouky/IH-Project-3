@@ -19,20 +19,13 @@ authenticationRouter.post(
   '/sign-up',
   // upload.single('photo'),
   passport.authenticate('local-sign-up', {
-    successRedirect: '/',
-    failureRedirect: '/sign-up'
-  })
-);
-
-authenticationRouter.post(
-  '/me',
-  passport.authenticate('local-sign-up', {
-    successRedirect: '/',
+    successRedirect: '/authentication/me',
     failureRedirect: '/sign-up'
   })
 );
 
 authenticationRouter.get('/me', (request, response) => {
+  //authentication/me
   const user = request.user;
   response.json({ user });
 });
@@ -49,7 +42,7 @@ authenticationRouter.post(
   '/sign-in',
   // upload.single('photo'),
   passport.authenticate('local-sign-in', {
-    successRedirect: '/private',
+    successRedirect: '/authentication/me',
     failureRedirect: '/sign-in'
   })
 );
@@ -76,3 +69,8 @@ authenticationRouter.post('/sign-out', (req, res, next) => {
 });
 
 module.exports = authenticationRouter;
+
+// authenticationRouter.get('/sign-out', (req, res) => {
+//   req.logout();
+
+// });
