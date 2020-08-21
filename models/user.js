@@ -16,11 +16,9 @@ const schema = new mongoose.Schema(
       trim: true,
       unique: true
     },
-    role: {
-      type: String,
-      enum: ['User', 'Admin'],
-      required: true,
-      default: 'User'
+    admin: {
+      type: Boolean,
+      default: false
     },
     deliveryAddress: {
       streetAddress: String,

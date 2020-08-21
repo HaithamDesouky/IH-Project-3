@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-// import PostForm from './../../components/PostForm';
+import PostForm from './../../components/PostForm';
+import App from './../../App';
 
 // import { createPost } from './../../services/post';
 
@@ -11,7 +12,13 @@ class ItemCreationView extends Component {
       photo: null
     };
   }
-
+  componentDidMount() {
+    // this.setState({
+    //   user: this.state.user
+    // });
+    // console.log('state', this.state);
+    console.log('props from ', this.props.user);
+  }
   handlePostCreation = () => {
     // const content = this.state.content;
     // const photo = this.state.photo;
@@ -43,23 +50,9 @@ class ItemCreationView extends Component {
   render() {
     return (
       <div>
-        {/* <PostForm
-          content={this.state.content}
-          onContentChange={this.handleContentChange}
-          onPhotoChange={this.handlePhotoChange}
-          onFormSubmission={this.handlePostCreation}
-        />
-        {/* <form onSubmit={this.handlePostCreation}>
-          <label htmlFor="content-input">Post Content</label>
-          <textarea
-            id="content-input"
-            placeholder="Write your post here..."
-            name="content"
-            value={this.state.content}
-            onChange={this.handleInputChange}
-          />
-          <button>Create Post</button>
-        </form> */}
+        {(this.props.user.admin && <h1>hello</h1>) || (
+          <h1>Oops! What brought you here! </h1>
+        )}
       </div>
     );
   }

@@ -8,8 +8,10 @@ const Navbar = props => {
       <Link to="/">Project</Link>
       <Link to="/shop">Shop</Link>
       <Link to="/post/create">Create a post</Link>
+
       {(props.user && (
         <>
+          {props.user.admin && <Link to="/admin/create-item">Admin</Link>}
           <span>{props.user.name}</span>
           <button onClick={props.onSignOut}>Sign Out</button>
         </>

@@ -34,17 +34,11 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.setState({
-      loaded: true
-    });
-
     loadMe()
       .then(data => {
         const user = data.user;
+        console.log(user);
         this.handleUserUpdate(user);
-        this.setState({
-          loaded: true
-        });
       })
       .then(error => {
         console.log(error);
@@ -52,9 +46,10 @@ class App extends Component {
   }
 
   handleUserUpdate = user => {
-    console.log('running');
+    console.log('handle update user');
     this.setState({
-      user
+      user,
+      loaded: true
     });
   };
   /*
@@ -81,7 +76,14 @@ componentDidUpdate(previousState, previousProps){
         {(this.state.loaded && (
           <Switch>
             <Route path="/" component={HomeView} exact />
-            <Route path="/create-item" component={ItemCreationView} exact />
+
+            <ProtectedRoute
+              path="/admin/create-item"
+              render={() => <ItemCreationView user={this.state.user} />}
+              authorized={this.state.user}
+              redirect="/error"
+              exact
+            />
 
             <Route path="/news-feed" component={NewsFeed} exact />
             <Route path="/shop" component={ShopView} exact />
