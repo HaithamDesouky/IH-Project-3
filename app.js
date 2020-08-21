@@ -14,8 +14,17 @@ const bindUserToViewLocals = require('./middleware/bind-user-to-view-locals.js')
 const passportConfigure = require('./passport-configuration.js');
 const indexRouter = require('./routes/index');
 const authenticationRouter = require('./routes/authentication');
+const postRouter = require('./routes/post');
+const cors = require('cors');
 
 const app = express();
+
+app.use(
+  cors({
+    origin: ['http://localhost:3000'],
+    credentials: true
+  })
+);
 
 app.use(serveFavicon(join(__dirname, 'public/images', 'favicon.ico')));
 app.use(logger('dev'));
@@ -42,6 +51,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(bindUserToViewLocals);
 
+app.use('/post', postRouter);
 app.use('/', indexRouter);
 app.use('/authentication', authenticationRouter);
 

@@ -1,0 +1,16 @@
+.post-item {
+  display: flex;
+  align-items: center;
+  padding: 1em;
+  border-radius: 0.5em;
+  box-shadow: 0 0.25em 1.5em -0.5em hsla(220, 30%, 80%, 0.5);
+  margin-bottom: 1em;
+  img {
+    width: 6em;
+    margin-right: 1em;
+  }
+  div {
+    display: flex;
+    flex-direction: column;
+  }
+}
