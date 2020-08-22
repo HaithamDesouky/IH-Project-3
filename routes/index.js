@@ -1,15 +1,17 @@
-'use strict';
+const express = require('express');
 
-const { Router } = require('express');
-const router = new Router();
-const routeGuard = require('./../middleware/route-guard');
+const routeAuthenticationGuard = require('../middleware/route-authentication-guard');
 
-router.get('/', (req, res, next) => {
-  res.json({ type: 'success', data: { title: 'Hello World' } });
-});
+const router = new express.Router();
+const roleRouteGuard = require('../middleware/roleRouteGuard');
 
-router.get('/private', routeGuard, (req, res, next) => {
-  res.json({});
-});
+router.get(
+  '/admin',
+  routeAuthenticationGuard,
+  roleRouteGuard(),
+  (request, response, next) => {
+    console.log('youre in the admin router');
+  }
+);
 
 module.exports = router;
