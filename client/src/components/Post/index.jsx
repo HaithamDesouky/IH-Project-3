@@ -9,7 +9,8 @@ const PostItem = ({ _id, content, creationDate, creator, photo }) => {
       <div>
         <strong>{content}</strong>
         <small>
-          By {creator.name} on {new Date(creationDate).toGMTString()}
+          <Link to={`/user/${creator._id}`}> By {creator.name} </Link>
+          {new Date(creationDate).toGMTString()}
         </small>
       </div>
     </Link>

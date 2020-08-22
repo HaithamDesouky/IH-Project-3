@@ -17,6 +17,7 @@ const upload = multer({ storage });
 
 postRouter.get('/list', (request, response, next) => {
   Post.find()
+    .populate('creator')
     .then(posts => {
       response.json({ posts });
     })

@@ -15,11 +15,13 @@ class NewsFeed extends Component {
     listPosts()
       .then(data => {
         const posts = data.posts;
-        console.log(posts);
+
         this.setState({
           posts,
           loaded: true
         });
+
+        console.log(this.state.posts);
       })
       .catch(error => {
         console.log(error);

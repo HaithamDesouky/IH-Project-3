@@ -22,6 +22,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import { useHistory } from 'react-router-dom';
 import AllItemsView from './views/Admin/AllItemsView';
 import AdminArea from './views/Admin/AdminArea';
+import UserProfile from './views/Social/UserProfile';
 
 import './App.scss';
 
@@ -78,6 +79,7 @@ componentDidUpdate(previousState, previousProps){
             <Switch>
               <Route path="/" component={HomeView} exact />
               <NewsFeed path="/social/newsfeed" exact />
+              <UserProfile path="/user/:id" exact />
 
               <ProtectedRoute
                 path="/admin/items/list"
@@ -86,7 +88,6 @@ componentDidUpdate(previousState, previousProps){
                 redirect="/error"
                 exact
               />
-
               <ProtectedRoute
                 path="/admin/create-item"
                 render={() => <ItemCreationView user={this.state.user} />}
@@ -94,7 +95,6 @@ componentDidUpdate(previousState, previousProps){
                 redirect="/error"
                 exact
               />
-
               <ProtectedRoute
                 path="/admin"
                 render={() => <AdminArea user={this.state.user} />}
@@ -102,7 +102,6 @@ componentDidUpdate(previousState, previousProps){
                 redirect="/error"
                 exact
               />
-
               <ProtectedRoute
                 path="/admin/items/list"
                 component={AllItemsView}
