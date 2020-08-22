@@ -11,6 +11,7 @@ const multerStorageCloudinary = require('multer-storage-cloudinary');
 const storage = new multerStorageCloudinary.CloudinaryStorage({
   cloudinary: cloudinary.v2
 });
+const roleRouteGuard = require('../middleware/roleRouteGuard');
 
 const upload = multer({ storage });
 

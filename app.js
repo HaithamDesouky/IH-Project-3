@@ -15,6 +15,7 @@ const passportConfigure = require('./passport-configuration.js');
 const authenticationRouter = require('./routes/authentication');
 const postRouter = require('./routes/post');
 const itemRouter = require('./routes/item');
+const router = require('./routes/index');
 
 const cors = require('cors');
 
@@ -52,6 +53,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(bindUserToViewLocals);
 
+app.use('/', router);
 app.use('/post', postRouter);
 app.use('/authentication', authenticationRouter);
 app.use('/items', itemRouter);

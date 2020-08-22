@@ -9,13 +9,15 @@ const cloudinary = require('cloudinary');
 const multerStorageCloudinary = require('multer-storage-cloudinary');
 
 const itemRouter = new express.Router();
+const roleRouteGuard = require('../middleware/roleRouteGuard');
 
 const storage = new multerStorageCloudinary.CloudinaryStorage({
   cloudinary: cloudinary.v2
 });
 const upload = multer({ storage });
 
-itemRouter.get('/list', (request, response, next) => {
+itemRouter.get('/list', roleRouteGuard(), (request, response, next) => {
+  console.log('running');
   Item.find()
     .then(items => {
       console.log(items);
@@ -43,6 +45,7 @@ itemRouter.get('/:id', async (request, response, next) => {
 itemRouter.post(
   '/',
   routeAuthenticationGuard,
+  roleRouteGuard(),
   upload.single('photo'),
   (request, response, next) => {
     let url;

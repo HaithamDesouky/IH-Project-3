@@ -8,6 +8,7 @@ const Navbar = props => {
       <Link to="/">Project</Link>
       <Link to="/shop">Shop</Link>
       <Link to="/post/create">Create a post</Link>
+      <Link to="/social/newsfeed">Social Area</Link>
 
       {(props.user && (
         <>

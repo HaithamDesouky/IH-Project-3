@@ -73,20 +73,11 @@ componentDidUpdate(previousState, previousProps){
       <div className="App">
         <BrowserRouter>
           <Navbar user={this.state.user} onSignOut={this.handleSignOut} />
+
           {(this.state.loaded && (
             <Switch>
               <Route path="/" component={HomeView} exact />
-              {/* <Route path="/admin/items/list" component={AllItemsView} exact /> */}
-
-              {/* <ProtectedRoute
-              path="/admin/items/list"
-              render={props => (
-                <AllItemsView {...props} user={this.state.user} />
-              )}
-              authorized={this.state.user}
-              redirect="/error"
-              exact
-            /> */}
+              <NewsFeed path="/social/newsfeed" exact />
 
               <ProtectedRoute
                 path="/admin/items/list"
