@@ -27,20 +27,7 @@ class HomeView extends Component {
   }
 
   render() {
-    return (
-      <div>
-        Welcome you gambling degenerate
-        {/* <h1>List of products</h1>
-        {this.state.products.map(product => (
-          <ProductItem
-            key={product._id}
-            product={product}
-            basket={this.props.basket}
-            onChangeQuantity={this.props.onChangeQuantity}
-          />
-        ))} */}
-      </div>
-    );
+    return <div>Welcome you gambling degenerate</div>;
   }
 }
 

@@ -1,44 +1,55 @@
 import React, { Component } from 'react';
-import PostForm from './../../components/PostForm';
-import App from './../../App';
+import ItemCreationForm from './../../components/ItemCreationForm';
+import { withRouter } from 'react-router-dom';
 
-// import { createPost } from './../../services/post';
+import { createItem } from './../../services/items';
 
 class ItemCreationView extends Component {
   constructor() {
     super();
     this.state = {
-      content: '',
-      photo: null
+      newItem: {
+        name: '',
+        itemType: '',
+        description: '',
+        photo: null
+      }
     };
   }
-  componentDidMount() {
-    // this.setState({
-    //   user: this.state.user
-    // });
-    // console.log('state', this.state);
-    console.log('props from ', this.props.user);
-  }
+
   handlePostCreation = () => {
-    // const content = this.state.content;
-    // const photo = this.state.photo;
-    // const body = { content, photo };
-    // createPost(body)
-    //   .then(data => {
-    //     const post = data.post;
-    //     const id = post._id;
-    //     // Redirect user to single post view
-    //     this.props.history.push(`/post/${id}`);
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //   });
+    let newItem = this.state.newItem;
+    newItem.photo = this.state.photo;
+    createItem(newItem)
+      .then(data => {
+        console.log('HEY PROPS', this.props.history);
+        const item = data.item;
+        const id = item._id;
+        // Redirect user to single post view
+        this.props.history.push('/admin/items/list');
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
 
-  handleContentChange = content => {
+  handleInputChange = event => {
+    const property = event.target.name;
+    const value = event.target.value;
+    const { newItem } = { ...this.state };
+    const currentState = newItem;
+    currentState[property] = value;
+
     this.setState({
-      content
+      newItem: currentState
     });
+
+    // const property = event.target.name;
+    // const value = event.target.value;
+    // console.log(property, value);
+    // this.setState({
+    //   content
+    // });
   };
 
   handlePhotoChange = photo => {
@@ -50,12 +61,28 @@ class ItemCreationView extends Component {
   render() {
     return (
       <div>
-        {(this.props.user.admin && <h1>hello</h1>) || (
-          <h1>Oops! What brought you here! </h1>
-        )}
+        {(this.props.user && (
+          <>
+            {(this.props.user.admin && (
+              <div>
+                <h1>Hello Admin</h1>
+
+                <h2>Create your items here </h2>
+
+                <ItemCreationForm
+                  content={this.state.content}
+                  onInputChange={this.handleInputChange}
+                  onPhotoChange={this.handlePhotoChange}
+                  onFormSubmission={this.handlePostCreation}
+                />
+              </div>
+            )) || <h1>Oops! What brought you here! </h1>}
+          </>
+        )) ||
+          'You are not seeing the form'}
       </div>
     );
   }
 }
 
-export default ItemCreationView;
+export default withRouter(ItemCreationView);

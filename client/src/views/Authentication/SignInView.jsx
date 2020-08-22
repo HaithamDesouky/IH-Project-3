@@ -25,7 +25,6 @@ class AuthenticationSignInView extends Component {
     signIn(body)
       .then(data => {
         const { user } = data;
-        console.log(data);
         this.props.onUserUpdate(user);
         this.props.history.push('/');
       })

@@ -11,7 +11,7 @@ const Navbar = props => {
 
       {(props.user && (
         <>
-          {props.user.admin && <Link to="/admin/create-item">Admin</Link>}
+          {props.user.admin && <Link to="/admin">Admin</Link>}
           <span>{props.user.name}</span>
           <button onClick={props.onSignOut}>Sign Out</button>
         </>

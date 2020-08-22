@@ -1,36 +1,37 @@
 const express = require('express');
 
-const Post = require('./../models/post');
+const Item = require('../models/itemModel');
 
-const routeAuthenticationGuard = require('./../middleware/route-authentication-guard');
+const routeAuthenticationGuard = require('../middleware/route-authentication-guard');
 
 const multer = require('multer');
 const cloudinary = require('cloudinary');
 const multerStorageCloudinary = require('multer-storage-cloudinary');
 
-const postRouter = new express.Router();
+const itemRouter = new express.Router();
 
 const storage = new multerStorageCloudinary.CloudinaryStorage({
   cloudinary: cloudinary.v2
 });
 const upload = multer({ storage });
 
-postRouter.get('/list', (request, response, next) => {
-  Post.find()
-    .then(posts => {
-      response.json({ posts });
+itemRouter.get('/list', (request, response, next) => {
+  Item.find()
+    .then(items => {
+      console.log(items);
+      response.json({ items });
     })
     .catch(error => {
       next(error);
     });
 });
 
-postRouter.get('/:id', async (request, response, next) => {
+itemRouter.get('/:id', async (request, response, next) => {
   const id = request.params.id;
   try {
-    const post = await Post.findById(id).populate('creator');
-    if (post) {
-      response.json({ post });
+    const item = await Item.findById(id).populate('creator');
+    if (item) {
+      response.json({ item });
     } else {
       next();
     }
@@ -39,7 +40,7 @@ postRouter.get('/:id', async (request, response, next) => {
   }
 });
 
-postRouter.post(
+itemRouter.post(
   '/',
   routeAuthenticationGuard,
   upload.single('photo'),
@@ -48,14 +49,18 @@ postRouter.post(
     if (request.file) {
       url = request.file.path;
     }
+    console.log('req body', request.body);
 
-    Post.create({
-      creator: request.user._id,
-      content: request.body.content,
+    const { name, description, itemType } = request.body;
+    console.log(url, request.file);
+    Item.create({
+      name,
+      description,
+      itemType,
       photo: url
     })
-      .then(post => {
-        response.json({ post });
+      .then(item => {
+        response.json({ item });
       })
       .catch(error => {
         next(error);
@@ -63,13 +68,13 @@ postRouter.post(
   }
 );
 
-postRouter.delete(
+itemRouter.delete(
   '/:id',
   routeAuthenticationGuard,
   async (request, response, next) => {
     const id = request.params.id;
 
-    Post.findOneAndDelete({ _id: id, creator: request.user._id })
+    Item.findOneAndDelete({ _id: id, creator: request.user._id })
       .then(() => {
         response.json({});
       })
@@ -79,19 +84,19 @@ postRouter.delete(
   }
 );
 
-postRouter.patch(
+itemRouter.patch(
   '/:id',
   routeAuthenticationGuard,
   (request, response, next) => {
     const id = request.params.id;
 
-    Post.findOneAndUpdate(
+    Item.findOneAndUpdate(
       { _id: id, creator: request.user._id },
       { content: request.body.content },
       { new: true }
     )
-      .then(post => {
-        response.json({ post });
+      .then(item => {
+        response.json({ item });
       })
       .catch(error => {
         next(error);
@@ -99,4 +104,4 @@ postRouter.patch(
   }
 );
 
-module.exports = postRouter;
+module.exports = itemRouter;

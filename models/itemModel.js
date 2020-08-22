@@ -13,7 +13,8 @@ const itemSchema = new mongoose.Schema(
       type: String,
       enum: ['Clothing', 'Toys', 'Misc', 'Special']
     },
-    picture: String
+    description: String,
+    photo: String
   },
   {
     timestamps: {

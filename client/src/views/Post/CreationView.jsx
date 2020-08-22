@@ -23,6 +23,7 @@ class PostCreationView extends Component {
         const post = data.post;
         const id = post._id;
         // Redirect user to single post view
+
         this.props.history.push(`/post/${id}`);
       })
       .catch(error => {

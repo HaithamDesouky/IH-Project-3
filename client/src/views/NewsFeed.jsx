@@ -14,9 +14,7 @@ class NewsFeed extends Component {
   componentDidMount() {
     listPosts()
       .then(data => {
-        console.log(data);
         const posts = data.posts;
-        console.log(posts);
         this.setState({
           posts,
           loaded: true
