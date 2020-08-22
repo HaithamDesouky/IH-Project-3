@@ -22,16 +22,14 @@
     "mongodb": "^3.6.0",
     "mongoose": "^5.6.13",
     "morgan": "^1.9.1",
-<<<<<<< HEAD
-    "node": "^14.8.0",
-=======
     "multer": "^1.4.2",
     "multer-storage-cloudinary": "^4.0.0",
->>>>>>> d1569a161167ca51e0e5c00aabb9492e73af0178
+    "node": "^14.8.0",
     "passport": "^0.4.0",
     "passport-github": "^1.1.0",
     "passport-local": "^1.0.0",
-    "serve-favicon": "^2.5.0"
+    "serve-favicon": "^2.5.0",
+    "stripe": "^8.89.0"
   },
   "devDependencies": {
     "mocha": "^7.0.1",
