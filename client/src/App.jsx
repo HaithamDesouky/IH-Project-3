@@ -19,6 +19,8 @@ import ShopView from './views/ShopView';
 import ItemCreationView from './views/Admin/ItemCreationView';
 import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
+import AdminRoute from './components/AdminRoute';
+
 import { useHistory } from 'react-router-dom';
 import AllItemsView from './views/Admin/AllItemsView';
 import AdminArea from './views/Admin/AdminArea';
@@ -81,28 +83,28 @@ componentDidUpdate(previousState, previousProps){
               <NewsFeed path="/social/newsfeed" exact />
               <UserProfile path="/user/:id" exact />
 
-              <ProtectedRoute
+              <AdminRoute
                 path="/admin/items/list"
                 component={AllItemsView}
                 authorized={this.state.user}
                 redirect="/error"
                 exact
               />
-              <ProtectedRoute
+              <AdminRoute
                 path="/admin/create-item"
                 render={() => <ItemCreationView user={this.state.user} />}
                 authorized={this.state.user}
                 redirect="/error"
                 exact
               />
-              <ProtectedRoute
+              <AdminRoute
                 path="/admin"
                 render={() => <AdminArea user={this.state.user} />}
                 authorized={this.state.user}
                 redirect="/error"
                 exact
               />
-              <ProtectedRoute
+              <AdminRoute
                 path="/admin/items/list"
                 component={AllItemsView}
                 authorized={this.state.user}

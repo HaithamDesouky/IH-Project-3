@@ -1,13 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { isAdmin } from '../../services/admin';
 
 class AdminArea extends React.Component {
-  componentDidMount() {
-    isAdmin().catch(error => {
-      this.props.history.push('/error');
-    });
-  }
   render() {
     return (
       <div>
