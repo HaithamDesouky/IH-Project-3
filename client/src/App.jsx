@@ -74,90 +74,95 @@ componentDidUpdate(previousState, previousProps){
   render() {
     return (
       <div className="App">
-        <BrowserRouter>
-          <Navbar user={this.state.user} onSignOut={this.handleSignOut} />
+        <Navbar user={this.state.user} onSignOut={this.handleSignOut} />
 
-          {(this.state.loaded && (
-            <Switch>
-              <Route path="/" component={HomeView} exact />
-              <NewsFeed path="/social/newsfeed" exact />
-              <UserProfile path="/user/:id" exact />
+        {(this.state.loaded && (
+          <Switch>
+            <Route path="/" component={HomeView} exact />
+            <NewsFeed path="/social/newsfeed" exact />
 
-              <AdminRoute
-                path="/admin/items/list"
-                component={AllItemsView}
-                authorized={this.state.user}
-                redirect="/error"
-                exact
-              />
-              <AdminRoute
-                path="/admin/create-item"
-                render={() => <ItemCreationView user={this.state.user} />}
-                authorized={this.state.user}
-                redirect="/error"
-                exact
-              />
-              <AdminRoute
-                path="/admin"
-                render={() => <AdminArea user={this.state.user} />}
-                authorized={this.state.user}
-                redirect="/error"
-                exact
-              />
-              <AdminRoute
-                path="/admin/items/list"
-                component={AllItemsView}
-                authorized={this.state.user}
-                redirect="/error"
-                exact
-              />
-              <Route path="/news-feed" component={NewsFeed} exact />
-              <Route path="/shop" component={ShopView} exact />
-              <ProtectedRoute
-                path="/post/create"
-                component={PostCreationView}
-                authorized={this.state.user}
-                redirect="/authentication/sign-in"
-              />
-              <ProtectedRoute
-                path="/post/:id/edit"
-                component={PostEditView}
-                authorized={this.state.user}
-                redirect="/authentication/sign-in"
-              />
-              <Route path="/post/:id" component={SinglePostView} />
-              <ProtectedRoute
-                path="/authentication/sign-up"
-                render={props => (
-                  <AuthenticationSignUpView
-                    {...props}
-                    onUserUpdate={this.handleUserUpdate}
-                  />
-                )}
-                authorized={!this.state.user}
-                redirect="/"
-              />
-              <ProtectedRoute
-                path="/authentication/sign-in"
-                render={props => (
-                  <AuthenticationSignInView
-                    {...props}
-                    onUserUpdate={this.handleUserUpdate}
-                  />
-                )}
-                authorized={!this.state.user}
-                redirect="/"
-              />
-              <Route path="/error" component={ErrorView} />
-              <Redirect from="/" to="/error" />
-              {/* <Route path="/authentication/sign-in" component={AuthenticationSignInView} /> */}
-            </Switch>
-          )) || (
-            <div>
-              <h1>Loading...</h1>
-            </div>
-          )}
-        </BrowserRouter>
+            <AdminRoute
+              path="/admin/items/list"
+              component={AllItemsView}
+              authorized={this.state.user}
+              redirect="/error"
+              exact
+            />
+            <AdminRoute
+              path="/admin/create-item"
+              render={() => <ItemCreationView user={this.state.user} />}
+              authorized={this.state.user}
+              redirect="/error"
+              exact
+            />
+            <AdminRoute
+              path="/admin"
+              render={() => <AdminArea user={this.state.user} />}
+              authorized={this.state.user}
+              redirect="/error"
+              exact
+            />
+            <AdminRoute
+              path="/admin/items/list"
+              component={AllItemsView}
+              authorized={this.state.user}
+              redirect="/error"
+              exact
+            />
+            <Route path="/news-feed" component={NewsFeed} exact />
+            <Route path="/shop" component={ShopView} exact />
+            <ProtectedRoute
+              path="/post/create"
+              component={PostCreationView}
+              authorized={this.state.user}
+              redirect="/authentication/sign-in"
+            />
+
+            <ProtectedRoute
+              path="/user/:id"
+              exact
+              component={UserProfile}
+              authorized={this.state.user}
+              redirect="/authentication/sign-in"
+            />
+            <ProtectedRoute
+              path="/post/:id/edit"
+              component={PostEditView}
+              authorized={this.state.user}
+              redirect="/authentication/sign-in"
+            />
+            <Route path="/post/:id" component={SinglePostView} />
+            <ProtectedRoute
+              path="/authentication/sign-up"
+              render={props => (
+                <AuthenticationSignUpView
+                  {...props}
+                  onUserUpdate={this.handleUserUpdate}
+                />
+              )}
+              authorized={!this.state.user}
+              redirect="/"
+            />
+            <ProtectedRoute
+              path="/authentication/sign-in"
+              render={props => (
+                <AuthenticationSignInView
+                  {...props}
+                  onUserUpdate={this.handleUserUpdate}
+                />
+              )}
+              authorized={!this.state.user}
+              redirect="/"
+            />
+            <Route path="/error" component={ErrorView} />
+            <Redirect from="/" to="/error" />
+            {/* <Route path="/authentication/sign-in" component={AuthenticationSignInView} /> */}
+          </Switch>
+        )) || (
+          <div>
+            <h1>Loading...</h1>
+          </div>
+        )}
       </div>
     );
   }

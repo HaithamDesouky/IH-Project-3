@@ -15,6 +15,7 @@ const passportConfigure = require('./passport-configuration.js');
 const authenticationRouter = require('./routes/authentication');
 const postRouter = require('./routes/post');
 const itemRouter = require('./routes/item');
+const userRouter = require('./routes/user');
 
 const cors = require('cors');
 
@@ -55,7 +56,9 @@ app.use(bindUserToViewLocals);
 app.use('/post', postRouter);
 app.use('/authentication', authenticationRouter);
 app.use('/items', itemRouter);
+app.use('/user', userRouter);
 
+userRouter;
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {
   next(createError(404));
