@@ -17,7 +17,7 @@ import CheckoutView from './views/Credits/CheckoutView';
 import CreditsView from './views/Credits/CreditsView';
 import ErrorView from './views/ErrorView';
 import HomeView from './views/HomeView';
-import ShopView from './views/ShopView';
+import ShopView from './views/Shop/ShopView';
 import ItemCreationView from './views/Admin/ItemCreationView';
 import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -151,6 +151,7 @@ componentDidUpdate(previousState, previousProps){
               render={props => (
                 <CheckoutView
                   {...props}
+                  user={this.state.user}
                   basket={this.state.basket}
                   onChangeQuantity={this.handleChangeInQuantity}
                 />

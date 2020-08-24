@@ -48,6 +48,7 @@ passport.use(
           callback(null, user);
         })
         .catch(error => {
+          console.log(error);
           callback(error);
         });
     }

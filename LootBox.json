@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Gaming Box",
+    "lootType": "Gaming",
+    "picture": "https://www.pcguia.pt/wp-content/uploads/2019/11/lootbox-750x460.jpg",
+    "priceInCredits": {
+      "amount": 29.99
+    }
+  },
+  {
+    "name": "Anime Box",
+    "lootType": "Anime",
+    "picture": "https://www.pcguia.pt/wp-content/uploads/2019/11/lootbox-750x460.jpg",
+    "priceInCredits": {
+      "amount": 29.99
+    }
+  },
+  {
+    "name": "Entertainment Box",
+    "lootType": "Entertainment",
+    "picture": "https://www.pcguia.pt/wp-content/uploads/2019/11/lootbox-750x460.jpg",
+    "priceInCredits": {
+      "amount": 29.99
+    }
+  }
+]
