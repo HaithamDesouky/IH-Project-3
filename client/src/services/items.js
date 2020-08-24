@@ -10,7 +10,6 @@ export const listItems = () =>
 
 export const createItem = item => {
   const formBody = new window.FormData();
-  console.log('body in items dot js', item);
   formBody.append('name', item.name);
   formBody.append('itemType', item.itemType);
   formBody.append('description', item.description);

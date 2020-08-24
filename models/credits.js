@@ -1,6 +1,6 @@
-"use strict";
+'use strict';
 
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
   name: String,
@@ -9,9 +9,9 @@ const schema = new mongoose.Schema({
     amount: Number,
     currency: {
       type: String,
-      enum: ["EUR"],
-    },
-  },
+      enum: ['EUR']
+    }
+  }
 });
 
-module.exports = mongoose.model("Credits", schema);
+module.exports = mongoose.model('Credits', schema);
