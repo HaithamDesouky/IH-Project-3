@@ -21,8 +21,8 @@ const schema = new mongoose.Schema(
       default: false
     },
     credits: {
-      type: String,
-      default: '0'
+      type: Number,
+      default: 0
     },
     deliveryAddress: {
       streetAddress: String,

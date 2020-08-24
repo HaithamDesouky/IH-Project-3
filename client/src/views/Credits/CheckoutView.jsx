@@ -1,38 +1,38 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import BasketInformation from "../../components/Credits/BasketInformation";
-import CreditsPack from "../../components/Credits/CreditsPack";
-import CheckoutForm from "../../components/Credits/CheckoutForm";
+import BasketInformation from '../../components/Credits/BasketInformation';
+import CreditsPack from '../../components/Credits/CreditsPack';
+import CheckoutForm from '../../components/Credits/CheckoutForm';
 
-import { createOrder } from "../../services/order";
+import { createOrder } from '../../services/order';
 
 class CheckoutView extends Component {
   handleCheckout = ({ address, token }) => {
-    const basket = this.props.basket.map((item) => {
+    const basket = this.props.basket.map(item => {
       return {
-        creditsId: item.credits._id,
-        quantity: item.quantity,
+        credits: this.props.user.credits,
+        quantity: item.quantity
       };
     });
     createOrder({ basket, address, token })
-      .then((data) => {
-        this.props.history.push("/");
+      .then(data => {
+        this.props.history.push('/');
       })
-      .catch((error) => {
-        console.log("Order failer", error);
+      .catch(error => {
+        console.log('Order failer', error);
       });
   };
 
   render() {
     const { basket } = this.props;
-
+    console.log(this.props);
     return (
       <div>
         <h1>Products in basket</h1>
         {(basket.length &&
-          basket.map((item) => (
+          basket.map(item => (
             <CreditsPack
-              key={item.credits._id}
+              key={item.credits}
               product={item.credits}
               basket={this.props.basket}
               onChangeQuantity={this.props.onChangeQuantity}

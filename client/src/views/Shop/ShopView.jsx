@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+// import BoxView from '../components/BoxView';
+import lootBoxes from '../../components/Box/BoxView';
 // import { listProducts } from '../services/product';
 
 // import ProductItem from '../components/ProductItem';
@@ -8,7 +10,7 @@ class ShopView extends Component {
     super();
     this.state = {
       loaded: true,
-      products: []
+      lootBoxes: []
     };
   }
 
@@ -30,15 +32,8 @@ class ShopView extends Component {
     return (
       <div>
         Buy our shit
-        {/* <h1>List of products</h1>
-        {this.state.products.map(product => (
-          <ProductItem
-            key={product._id}
-            product={product}
-            basket={this.props.basket}
-            onChangeQuantity={this.props.onChangeQuantity}
-          />
-        ))} */}
+        <h1>List of products</h1>
+        <lootBoxes />
       </div>
     );
   }
