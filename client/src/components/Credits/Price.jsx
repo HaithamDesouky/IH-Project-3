@@ -1,13 +1,8 @@
-import React from "react";
+import React from 'react';
 
-const Price = ({ amount, currency }) => {
-  const currencyIcons = {
-    EUR: "€",
-  };
-  const symbol = currencyIcons[currency];
-
+const Price = ({ credits }) => {
   return (
-    <span className="price">{`${(amount / 100).toFixed(2)}${symbol}`}</span>
+    <span className="price">{`${(credits / 100).toFixed(2)} credits`}</span>
   );
 };
 

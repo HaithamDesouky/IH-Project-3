@@ -1,30 +1,30 @@
-"use strict";
+'use strict';
 
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
   belongsToWallet: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+    ref: 'User'
   },
   address: String,
   total: {
     amount: Number,
     currency: {
       type: String,
-      enum: ["EUR"],
-    },
+      enum: ['Credits']
+    }
   },
   basket: [
     {
       product: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Credits",
+        ref: 'Credits'
       },
-      quantity: Number,
-    },
+      quantity: Number
+    }
   ],
-  charge: String,
+  charge: String
 });
 
-module.exports = mongoose.model("Order", schema);
+module.exports = mongoose.model('Order', schema);
