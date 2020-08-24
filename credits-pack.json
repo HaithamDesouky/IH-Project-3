@@ -1,0 +1,26 @@
+[
+  {
+    "name": "1000 Credits",
+    "picture": "https://tiimg.tistatic.com/fp/1/006/181/fine-finish-gold-bars-485.jpg",
+    "price": {
+      "amount": 29.99,
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "6000 Credits",
+    "picture": "https://images-na.ssl-images-amazon.com/images/I/51tsNh5CWLL._AC_SL1001_.jpg",
+    "price": {
+      "amount": 179.99,
+      "currency": "EUR"
+    }
+  },
+  {
+    "name": "12000 Credits",
+    "picture": "https://st2.depositphotos.com/1006542/5825/i/950/depositphotos_58256437-stock-photo-gold-bars.jpg",
+    "price": {
+      "amount": 359.99,
+      "currency": "EUR"
+    }
+  }
+]

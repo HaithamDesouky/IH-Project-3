@@ -8,7 +8,7 @@ import {
 } from "@stripe/react-stripe-js";
 
 const stripeApiPublicKey = process.env.REACT_APP_STRIPE_PUBLIC_KEY;
-//same as Jose, edit later
+
 const cardOptions = {
   style: {
     base: {
@@ -66,7 +66,7 @@ class CheckoutForm extends Component {
                   this.handleFormSubmission(event, stripe, elements)
                 }
               >
-                <label htmlFor="input-address">Billing Address</label>
+                <label htmlFor="input-address">Billing Adress</label>
                 <input
                   id="input-address"
                   type="text"
