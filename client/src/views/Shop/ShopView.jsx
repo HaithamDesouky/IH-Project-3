@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import BoxView from '../components/BoxView';
+// import BoxView from '../components/BoxView';
 import lootBoxes from '../../components/Box/BoxView';
 // import { listProducts } from '../services/product';
 
