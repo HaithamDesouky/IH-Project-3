@@ -41,11 +41,7 @@ class SinglePostView extends Component {
     const id = this.props.match.params.id;
     createComment(newComment)
       .then(data => {
-        console.log('HEY PROPS', data.comment);
-
-        // this.setState({
-        //   comments: [...data.comment.comments]
-        // });
+        this.componentDidMount();
       })
       .catch(error => {
         console.log(error);
@@ -66,7 +62,6 @@ class SinglePostView extends Component {
 
   render() {
     const post = this.state.post;
-    console.log('single view user', this.state.comments);
     return (
       <div>
         {(this.state.loaded && (

@@ -4,6 +4,7 @@ const CommentInput = props => {
   const handleFormSubmission = event => {
     event.preventDefault();
     props.onFormSubmission();
+    event.target.commentContent.value = '';
   };
 
   const handleFormInputChange = event => {

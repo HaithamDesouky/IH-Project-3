@@ -1,31 +1,28 @@
 import React, { Component } from 'react';
-// import BoxView from '../components/BoxView';
-import lootBoxes from '../../components/Box/BoxView';
-// import { listProducts } from '../services/product';
-
-// import ProductItem from '../components/ProductItem';
+import { listboxes } from './../../services/shop';
+import LootBox from '../../components/Box/BoxView';
 
 class ShopView extends Component {
   constructor() {
     super();
     this.state = {
-      loaded: true,
+      loaded: false,
       lootBoxes: []
     };
   }
 
   componentDidMount() {
-    // listProducts()
-    //   .then(data => {
-    //     const products = data.products;
-    //     this.setState({
-    //       loaded: true,
-    //       products
-    //     });
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //   });
+    listboxes()
+      .then(data => {
+        const lootBoxes = data.lootBoxes;
+        this.setState({
+          loaded: true,
+          lootBoxes
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   render() {
@@ -33,7 +30,10 @@ class ShopView extends Component {
       <div>
         Buy our shit
         <h1>List of products</h1>
-        <lootBoxes />
+        {(this.state.loaded &&
+          this.state.lootBoxes.map(lootBox => (
+            <LootBox {...lootBox} key={lootBox._id} />
+          ))) || <h1>Loading...</h1>}
       </div>
     );
   }

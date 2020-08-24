@@ -22,20 +22,23 @@
 
 import React from 'react';
 
-const lootBoxes = props => {
-  const { LootBox, basket } = props;
-  const existingItem = basket.find(item => item.LootBox._id === LootBox._id);
-  const quantity = existingItem ? existingItem.quantity : 0;
+const singleBox = props => {
+  const LootBox = props.LootBox;
   return (
-    <div key={props.LootBox._id} className="lootBox">
-      <img src={props.LootBox.picture} alt={props.LootBox.name} />
-      <div className="details">
-        <strong>{props.LootBox.name}</strong>
-        <small>Type: {props.LootBox.lootType}</small>
-        <h4>{props.LootBox.priceInCredits}</h4>
+    <div className="shop">
+      <div className="lootbox">
+        <h1>{LootBox.name}</h1>
+        <img src={LootBox.picture} alt={LootBox.name} className="Lootboxpic" />
+        <div className="loot_buttons">
+          <button>-</button>
+          <span>0</span>
+          <button>+</button>
+        </div>
+        <p>{LootBox.lootType}</p>
+        <p>{LootBox.priceInCredits}</p>
       </div>
     </div>
   );
 };
 
-export default lootBoxes;
+export default singleBox;
