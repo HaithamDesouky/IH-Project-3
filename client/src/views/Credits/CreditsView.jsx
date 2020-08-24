@@ -1,27 +1,27 @@
-import React, { Component } from "react";
-import { listCredits } from "../../services/credits";
+import React, { Component } from 'react';
+import { listCredits } from '../../services/credits';
 
-import CreditsPack from "../../components/Credits/CreditsPack";
+import CreditsPack from '../../components/Credits/CreditsPack';
 
 class CreditsView extends Component {
   constructor() {
     super();
     this.state = {
       loaded: false,
-      credits: [],
+      credits: []
     };
   }
 
   componentDidMount() {
     listCredits()
-      .then((data) => {
+      .then(data => {
         const credits = data.credits;
         this.setState({
           loaded: true,
-          credits,
+          credits
         });
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error);
       });
   }
@@ -29,8 +29,8 @@ class CreditsView extends Component {
   render() {
     return (
       <div>
-        <h1>List of products</h1>
-        {this.state.credits.map((credits) => (
+        <h1>Buy Credits</h1>
+        {this.state.credits.map(credits => (
           <CreditsPack
             key={credits._id}
             product={credits}

@@ -20,6 +20,10 @@ const schema = new mongoose.Schema(
       type: Boolean,
       default: false
     },
+    credits: {
+      type: String,
+      default: '0'
+    },
     deliveryAddress: {
       streetAddress: String,
       country: String,
@@ -68,6 +72,7 @@ const schema = new mongoose.Schema(
       type: String
     }
   },
+
   {
     timestamps: {
       createdAt: 'creationDate'
