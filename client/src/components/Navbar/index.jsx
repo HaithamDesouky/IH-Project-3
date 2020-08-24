@@ -5,32 +5,29 @@ import BasketInformation from "../../components/Credits/BasketInformation";
 
 const Navbar = (props) => {
   return (
-    <div classname="App">
-      <nav>
-        <Link to="/">Project</Link>
-        <Link to="/shop">Shop</Link>
-        <Link to="/credits">Buy Credits</Link>
+    <nav>
+      <Link to="/">Project</Link>
+      <Link to="/shop">Shop</Link>
+      <Link to="/post/create">Create a post</Link>
+      <Link to="/social/newsfeed">Social Area</Link>
+      <Link to="/credits">Buy Credits</Link>
+      <Link to="/checkout">Checkout</Link>
 
-        <Link to="/checkout">Checkout</Link>
-
-        <Link to="/post/create">Create a post</Link>
-        <Link to="/social/newsfeed">Social Area</Link>
-
-        {(props.user && (
+      {(props.user && (
+        <>
+          {props.user.admin && <Link to="/admin">Admin</Link>}
           <>
-            {props.user.admin && <Link to="/admin">Admin</Link>}
-            <span>{props.user.name}</span>
-
+            <Link to={`/user/${props.user._id}`}>{props.user.name}</Link>
             <button onClick={props.onSignOut}>Sign Out</button>
           </>
-        )) || (
-          <>
-            <Link to="/authentication/sign-up">Sign Up</Link>
-            <Link to="/authentication/sign-in">Sign In</Link>
-          </>
-        )}
-      </nav>
-    </div>
+        </>
+      )) || (
+        <>
+          <Link to="/authentication/sign-up">Sign Up</Link>
+          <Link to="/authentication/sign-in">Sign In</Link>
+        </>
+      )}
+    </nav>
   );
 };
 

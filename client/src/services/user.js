@@ -14,18 +14,11 @@ const api = axios.create({
 export const listPosts = () =>
   api.get('/post/list').then(response => response.data);
 
-export const createPost = body => {
-  const formBody = new window.FormData();
-  formBody.append('content', body.content);
-  formBody.append('photo', body.photo);
-  return api.post('/post', formBody).then(response => response.data);
-};
+export const loadUser = id =>
+  api.get(`/user/${id}`).then(response => response.data);
 
-export const loadPost = id =>
-  api.get(`/post/${id}`).then(response => response.data);
+// export const deletePost = id =>
+//   api.delete(`/post/${id}`).then(response => response.data);
 
-export const deletePost = id =>
-  api.delete(`/post/${id}`).then(response => response.data);
-
-export const editPost = (id, body) =>
-  api.patch(`/post/${id}`, body).then(response => response.data);
+// export const editPost = (id, body) =>
+//   api.patch(`/post/${id}`, body).then(response => response.data);
