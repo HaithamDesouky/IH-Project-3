@@ -12,7 +12,6 @@ const ItemCreationForm = props => {
 
   const handlePhotoInputChange = event => {
     const file = event.target.files[0];
-    console.log(file, 'logging file');
     props.onPhotoChange(file);
   };
 

@@ -23,7 +23,6 @@ export class UserProfile extends Component {
   };
 
   render() {
-    console.log(this.state.profile);
     return (
       <div>
         {this.state.loaded && (

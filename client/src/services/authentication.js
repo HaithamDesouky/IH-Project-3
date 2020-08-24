@@ -6,7 +6,6 @@ const api = axios.create({
 });
 
 export const signUp = signUpData => {
-  console.log(signUpData.photo);
   const body = new window.FormData();
   body.append('name', signUpData.name);
   body.append('password', signUpData.password);

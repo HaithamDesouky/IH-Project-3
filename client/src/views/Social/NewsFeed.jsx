@@ -20,8 +20,6 @@ class NewsFeed extends Component {
           posts,
           loaded: true
         });
-
-        console.log(this.state.posts);
       })
       .catch(error => {
         console.log(error);

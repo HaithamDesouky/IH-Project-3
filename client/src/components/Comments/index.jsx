@@ -4,7 +4,6 @@ import './style.scss';
 import defaultPhoto from './default.jfif';
 
 const Comment = ({ _id, creator, content, createdAt }) => {
-  console.log('data', createdAt);
   return (
     <Link to={`/items/${_id}`} className="individual-item">
       {(creator.photo && <img src={creator.photo} alt={content} />) || (

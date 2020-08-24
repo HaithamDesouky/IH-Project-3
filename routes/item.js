@@ -17,10 +17,8 @@ const storage = new multerStorageCloudinary.CloudinaryStorage({
 const upload = multer({ storage });
 
 itemRouter.get('/list', roleRouteGuard(), (request, response, next) => {
-  console.log('running');
   Item.find()
     .then(items => {
-      console.log(items);
       response.json({ items });
     })
     .catch(error => {
@@ -52,10 +50,8 @@ itemRouter.post(
     if (request.file) {
       url = request.file.path;
     }
-    console.log('req body', request.body);
 
     const { name, description, itemType } = request.body;
-    console.log(url, request.file);
     Item.create({
       name,
       description,

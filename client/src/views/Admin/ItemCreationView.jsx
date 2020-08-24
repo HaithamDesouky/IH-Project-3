@@ -22,7 +22,6 @@ class ItemCreationView extends Component {
     newItem.photo = this.state.photo;
     createItem(newItem)
       .then(data => {
-        console.log('HEY PROPS', this.props.history);
         const item = data.item;
         const id = item._id;
         // Redirect user to single post view
@@ -43,13 +42,6 @@ class ItemCreationView extends Component {
     this.setState({
       newItem: currentState
     });
-
-    // const property = event.target.name;
-    // const value = event.target.value;
-    // console.log(property, value);
-    // this.setState({
-    //   content
-    // });
   };
 
   handlePhotoChange = photo => {

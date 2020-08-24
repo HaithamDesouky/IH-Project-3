@@ -6,8 +6,6 @@ const Post = require('./../models/post');
 const commentsRouter = new express.Router();
 
 commentsRouter.post('/create', (request, response, next) => {
-  console.log(request.body);
-
   const { creator, content, post } = request.body;
 
   Comment.create({
