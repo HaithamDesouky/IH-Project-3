@@ -13,31 +13,31 @@ class CreditsView extends Component {
   }
 
   componentDidMount() {
-    listCredits()
-      .then(data => {
-        const credits = data.credits;
-        this.setState({
-          loaded: true,
-          credits
-        });
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    // listCredits()
+    //   .then(data => {
+    //     const credits = data.credits;
+    //     this.setState({
+    //       loaded: true,
+    //       credits
+    //     });
+    // })
+    // .catch(error => {
+    //   console.log(error);
+    // });
   }
 
   render() {
     return (
       <div>
         <h1>Buy Credits</h1>
-        {this.state.credits.map(credits => (
+        {/* {this.state.credits.map(credits => (
           <CreditsPack
             key={credits._id}
             product={credits}
             basket={this.props.basket}
             onChangeQuantity={this.props.onChangeQuantity}
           />
-        ))}
+        ))} */}
       </div>
     );
   }

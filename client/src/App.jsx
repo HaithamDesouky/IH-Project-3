@@ -1,34 +1,34 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   BrowserRouter,
   Switch,
   Route,
   Redirect,
-  withRouter,
-} from "react-router-dom";
-import { loadMe, signOut } from "./services/authentication";
-import NewsFeed from "./views/NewsFeed";
-import SinglePostView from "./views/Post/SingleView";
-import PostEditView from "./views/Post/EditView";
-import PostCreationView from "./views/Post/CreationView";
-import AuthenticationSignUpView from "./views/Authentication/SignUpView";
-import AuthenticationSignInView from "./views/Authentication/SignInView";
-import CheckoutView from "./views/Credits/CheckoutView";
-import CreditsView from "./views/Credits/CreditsView";
-import ErrorView from "./views/ErrorView";
-import HomeView from "./views/HomeView";
-import ShopView from "./views/ShopView";
-import ItemCreationView from "./views/Admin/ItemCreationView";
-import Navbar from "./components/Navbar";
-import ProtectedRoute from "./components/ProtectedRoute";
-import AdminRoute from "./components/AdminRoute";
+  withRouter
+} from 'react-router-dom';
+import { loadMe, signOut } from './services/authentication';
+import NewsFeed from './views/NewsFeed';
+import SinglePostView from './views/Post/SingleView';
+import PostEditView from './views/Post/EditView';
+import PostCreationView from './views/Post/CreationView';
+import AuthenticationSignUpView from './views/Authentication/SignUpView';
+import AuthenticationSignInView from './views/Authentication/SignInView';
+import CheckoutView from './views/Credits/CheckoutView';
+import CreditsView from './views/Credits/CreditsView';
+import ErrorView from './views/ErrorView';
+import HomeView from './views/HomeView';
+import ShopView from './views/Shop/ShopView';
+import ItemCreationView from './views/Admin/ItemCreationView';
+import Navbar from './components/Navbar';
+import ProtectedRoute from './components/ProtectedRoute';
+import AdminRoute from './components/AdminRoute';
 
-import { useHistory } from "react-router-dom";
-import AllItemsView from "./views/Admin/AllItemsView";
-import AdminArea from "./views/Admin/AdminArea";
-import UserProfile from "./views/Social/UserProfile";
+import { useHistory } from 'react-router-dom';
+import AllItemsView from './views/Admin/AllItemsView';
+import AdminArea from './views/Admin/AdminArea';
+import UserProfile from './views/Social/UserProfile';
 
-import "./App.scss";
+import './App.scss';
 
 class App extends Component {
   constructor() {
@@ -36,26 +36,26 @@ class App extends Component {
     this.state = {
       loaded: false,
       user: null,
-      basket: [],
+      basket: []
     };
   }
 
   componentDidMount() {
     loadMe()
-      .then((data) => {
+      .then(data => {
         const user = data.user;
         this.handleUserUpdate(user);
       })
-      .then((error) => {
+      .then(error => {
         console.log(error);
       });
   }
 
-  handleUserUpdate = (user) => {
-    ("handle update user");
+  handleUserUpdate = user => {
+    ('handle update user');
     this.setState({
       user,
-      loaded: true,
+      loaded: true
     });
   };
   /*
@@ -66,10 +66,10 @@ componentDidUpdate(previousState, previousProps){
   handleSignOut = () => {
     signOut()
       .then(() => {
-        this.props.history.push("/");
+        this.props.history.push('/');
         this.handleUserUpdate(null);
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error);
       });
   };
@@ -78,7 +78,7 @@ componentDidUpdate(previousState, previousProps){
     const basketClone = [...this.state.basket];
 
     const existingItem = basketClone.find(
-      (item) => item.credits._id === credits._id
+      item => item.credits._id === credits._id
     );
     if (existingItem) {
       const editedItem = { ...existingItem };
@@ -92,13 +92,13 @@ componentDidUpdate(previousState, previousProps){
     } else if (value > 0) {
       const newItem = {
         credits,
-        quantity: 1,
+        quantity: 1
       };
       basketClone.push(newItem);
     }
 
     this.setState({
-      basket: basketClone,
+      basket: basketClone
     });
   };
 
@@ -135,7 +135,7 @@ componentDidUpdate(previousState, previousProps){
             />
             <ProtectedRoute
               path="/credits"
-              render={(props) => (
+              render={props => (
                 <CreditsView
                   {...props}
                   basket={this.state.basket}
@@ -148,9 +148,10 @@ componentDidUpdate(previousState, previousProps){
             />
             <ProtectedRoute
               path="/checkout"
-              render={(props) => (
+              render={props => (
                 <CheckoutView
                   {...props}
+                  user={this.state.user}
                   basket={this.state.basket}
                   onChangeQuantity={this.handleChangeInQuantity}
                 />
@@ -191,7 +192,7 @@ componentDidUpdate(previousState, previousProps){
             <Route path="/post/:id" component={SinglePostView} />
             <ProtectedRoute
               path="/authentication/sign-up"
-              render={(props) => (
+              render={props => (
                 <AuthenticationSignUpView
                   {...props}
                   onUserUpdate={this.handleUserUpdate}
@@ -202,7 +203,7 @@ componentDidUpdate(previousState, previousProps){
             />
             <ProtectedRoute
               path="/authentication/sign-in"
-              render={(props) => (
+              render={props => (
                 <AuthenticationSignInView
                   {...props}
                   onUserUpdate={this.handleUserUpdate}
