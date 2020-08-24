@@ -17,7 +17,7 @@ const upload = multer({ storage });
 
 authenticationRouter.post(
   '/sign-up',
-  // upload.single('photo'),
+  upload.single('photo'),
   passport.authenticate('local-sign-up', {
     successRedirect: '/authentication/me',
     failureRedirect: '/sign-up'
