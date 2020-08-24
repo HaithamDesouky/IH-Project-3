@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { loadPost } from './../../services/post';
 import CommentInput from '../../components/Post/Comments';
-import { createComment } from './../../services/comments';
+import { createComment, loadComments } from './../../services/comments';
+import Comments from '../../components/Comments';
 
 class SinglePostView extends Component {
   constructor() {
@@ -10,6 +11,7 @@ class SinglePostView extends Component {
     this.state = {
       loaded: false,
       post: null,
+      comments: [],
       newComment: {
         creator: '',
         content: ''
@@ -22,8 +24,10 @@ class SinglePostView extends Component {
     loadPost(id)
       .then(data => {
         const post = data.post;
+
         this.setState({
           post,
+          comments: [...post.comments],
           loaded: true
         });
       })
@@ -34,13 +38,12 @@ class SinglePostView extends Component {
 
   handleCommentCreation = () => {
     let newComment = this.state.newComment;
+    const id = this.props.match.params.id;
     createComment(newComment)
       .then(data => {
-        console.log('HEY PROPS', data);
-        // const item = data.item;
-        // const id = item._id;
-        // Redirect user to single post view
-        this.props.history.push('/');
+        console.log('HEY PROPS', data.comment.comments);
+
+        this.componentDidMount();
       })
       .catch(error => {
         console.log(error);
@@ -52,6 +55,7 @@ class SinglePostView extends Component {
     let newComment = this.state.newComment;
     newComment.content = content;
     newComment.creator = this.props.user._id;
+    newComment.post = this.props.match.params.id;
 
     this.setState({
       newComment
@@ -60,7 +64,7 @@ class SinglePostView extends Component {
 
   render() {
     const post = this.state.post;
-    console.log('single view user', this.props, this.state);
+    console.log('single view user', this.state.comments);
     return (
       <div>
         {(this.state.loaded && (
@@ -76,6 +80,10 @@ class SinglePostView extends Component {
               onInputChange={this.handleInputChange}
               onFormSubmission={this.handleCommentCreation}
             />
+
+            {this.state.comments.map(eachComment => (
+              <Comments {...eachComment} key={eachComment._id} />
+            ))}
           </>
         )) || <p>Loading...</p>}
       </div>

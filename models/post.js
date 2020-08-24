@@ -8,6 +8,7 @@ const postSchema = new mongoose.Schema(
       ref: 'User'
     },
     liked: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
     content: {
       type: String,
       minlength: 3,

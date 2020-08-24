@@ -106,7 +106,6 @@ componentDidUpdate(previousState, previousProps){
     return (
       <div className="App">
         <Navbar user={this.state.user} onSignOut={this.handleSignOut} />
-
         {(this.state.loaded && (
           <Switch>
             <Route path="/" component={HomeView} exact />

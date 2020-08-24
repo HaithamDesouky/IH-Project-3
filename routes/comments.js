@@ -1,16 +1,29 @@
 const express = require('express');
 
 const Comment = require('./../models/comments');
+const Post = require('./../models/post');
 
 const commentsRouter = new express.Router();
 
 commentsRouter.post('/create', (request, response, next) => {
-  console.log(request.comment);
+  console.log(request.body);
+
+  const { creator, content, post } = request.body;
 
   Comment.create({
-    creator: request.body.creator,
-    content: request.body.content
+    creator,
+    content,
+    post
   })
+    .then(comment => {
+      return Post.findByIdAndUpdate(
+        post,
+        {
+          $push: { comments: comment._id }
+        },
+        { new: true }
+      );
+    })
     .then(comment => {
       response.json({ comment });
     })
@@ -20,6 +33,18 @@ commentsRouter.post('/create', (request, response, next) => {
     });
 });
 
+// commentsRouter.get('/:id', (request, response, next) => {
+//   const post = request.params;
+//   console.log(post);
+//   Comment.find({ post: post })
+//     .populate('creator')
+//     .then(posts => {
+//       response.json({ posts });
+//     })
+//     .catch(error => {
+//       next(error);
+//     });
+// });
 // commentRouter.get('/list', (request, response, next) => {
 //   Comment.find()
 //     .populate('creator')

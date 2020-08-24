@@ -1,20 +1,19 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './style.scss';
-import BasketInformation from '../../components/Credits/BasketInformation';
+import React from "react";
+import { Link } from "react-router-dom";
+import "./style.scss";
 
-const Navbar = props => {
+const Navbar = (props) => {
   return (
     <nav>
       <Link to="/">Project</Link>
       <Link to="/shop">Shop</Link>
-      <Link to="/post/create">Create a post</Link>
       <Link to="/social/newsfeed">Social Area</Link>
-      <Link to="/credits">Buy Credits</Link>
-      <Link to="/checkout">Checkout</Link>
 
       {(props.user && (
         <>
+          <Link to="/post/create">Create a post</Link>
+          <Link to="/credits">Buy Credits</Link>
+          <Link to="/checkout">Checkout</Link>
           {props.user.admin && <Link to="/admin">Admin</Link>}
           <>
             <Link to={`/user/${props.user._id}`}>{props.user.name}</Link>
