@@ -33,7 +33,7 @@ const schema = new mongoose.Schema(
     },
     phone: String,
     completedProfile: { type: Boolean, default: false },
-    picture: String,
+    photo: String,
     passwordHash: {
       type: String
     },

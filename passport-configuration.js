@@ -29,6 +29,10 @@ passport.use(
       passReqToCallback: true
     },
     (req, email, password, callback) => {
+      let url;
+      if (req.file) {
+        url = req.file.path;
+      }
       const name = req.body.name;
       bcryptjs
         .hash(password, 10)
@@ -36,7 +40,8 @@ passport.use(
           return User.create({
             name,
             email,
-            passwordHash: hash
+            passwordHash: hash,
+            photo: url
           });
         })
         .then(user => {

@@ -1,9 +1,9 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./style.scss";
-import BasketInformation from "../../components/Credits/BasketInformation";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './style.scss';
+import BasketInformation from '../../components/Credits/BasketInformation';
 
-const Navbar = (props) => {
+const Navbar = props => {
   return (
     <nav>
       <Link to="/">Project</Link>

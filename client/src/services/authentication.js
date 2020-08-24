@@ -5,8 +5,15 @@ const api = axios.create({
   withCredentials: true
 });
 
-export const signUp = body =>
-  api.post('/sign-up', body).then(response => response.data);
+export const signUp = signUpData => {
+  console.log(signUpData.photo);
+  const body = new window.FormData();
+  body.append('name', signUpData.name);
+  body.append('password', signUpData.password);
+  body.append('email', signUpData.email);
+  body.append('photo', signUpData.photo);
+  return api.post('/sign-up', body).then(response => response.data);
+};
 
 export const signIn = body =>
   api.post('/sign-in', body).then(response => response.data);

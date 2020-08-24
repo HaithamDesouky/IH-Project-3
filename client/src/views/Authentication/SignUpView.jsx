@@ -7,7 +7,8 @@ class AuthenticationSignUpView extends Component {
     this.state = {
       name: '',
       email: '',
-      password: ''
+      password: '',
+      photo: ''
     };
   }
 
@@ -20,8 +21,9 @@ class AuthenticationSignUpView extends Component {
 
   handleFormSubmission = event => {
     event.preventDefault();
-    const { name, email, password } = this.state;
-    const body = { name, email, password };
+    const { name, email, password, photo } = this.state;
+    const body = { name, email, password, photo };
+    console.log(body);
     signUp(body)
       .then(data => {
         const { user } = data;
@@ -31,6 +33,14 @@ class AuthenticationSignUpView extends Component {
       .catch(error => {
         console.log(error);
       });
+  };
+
+  handlePhotoInputChange = event => {
+    const file = event.target.files[0];
+
+    this.setState({
+      photo: file
+    });
   };
 
   render() {
@@ -65,6 +75,12 @@ class AuthenticationSignUpView extends Component {
             placeholder="Password"
             value={this.state.password}
             onChange={this.handleInputChange}
+          />
+
+          <input
+            type="file"
+            name="photo"
+            onChange={this.handlePhotoInputChange}
           />
 
           <button>Sign Up</button>
