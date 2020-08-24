@@ -41,11 +41,9 @@ class SinglePostView extends Component {
     const id = this.props.match.params.id;
     createComment(newComment)
       .then(data => {
-        console.log('HEY PROPS', data.comment);
+        console.log('HEY PROPS', data.comment.comments);
 
-        // this.setState({
-        //   comments: [...data.comment.comments]
-        // });
+        this.componentDidMount();
       })
       .catch(error => {
         console.log(error);
