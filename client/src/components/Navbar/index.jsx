@@ -1,8 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './nav.scss';
+import React from "react";
+import { Link } from "react-router-dom";
+import "./nav.scss";
 
-const Navbar = props => {
+const Navbar = (props) => {
   return (
     <nav id="nav">
       <Link to="/" class="home">

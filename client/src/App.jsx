@@ -14,6 +14,7 @@ import PostCreationView from "./views/Post/CreationView";
 import AuthenticationSignUpView from "./views/Authentication/SignUpView";
 import AuthenticationSignInView from "./views/Authentication/SignInView";
 import CheckoutView from "./views/Credits/CheckoutView";
+import MyBoxes from "./views/inventory/MyBoxes";
 import CreditsView from "./views/Credits/CreditsView";
 import ErrorView from "./views/ErrorView";
 import HomeView from "./views/HomeView";
@@ -187,6 +188,13 @@ class App extends Component {
               path="/user/:id"
               exact
               component={UserProfile}
+              authorized={this.state.user}
+              redirect="/authentication/sign-in"
+            />
+            <ProtectedRoute
+              path="/user/:id/myboxes"
+              exact
+              component={MyBoxes}
               authorized={this.state.user}
               redirect="/authentication/sign-in"
             />

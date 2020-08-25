@@ -1,11 +1,15 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { loadUser } from "../../services/user";
 import { loadOrders } from "../../services/order";
 import Order from "../../components/Orders";
+import NavBar from "../../components/Navbar";
+
 export class UserProfile extends Component {
   constructor() {
     super();
     this.state = {
+      user: null,
       profile: null,
       loaded: false,
       orders: [],
@@ -30,7 +34,7 @@ export class UserProfile extends Component {
     });
   };
 
-  render() {
+  render = () => {
     return (
       <div>
         {this.state.loaded && (
@@ -47,12 +51,12 @@ export class UserProfile extends Component {
               this.state.orders.map((order) => {
                 return <Order {...order} key={order._id} />;
               })}
-            <div> </div>
+            <div></div>
           </div>
         )}
       </div>
     );
-  }
+  };
 }
 
 export default UserProfile;

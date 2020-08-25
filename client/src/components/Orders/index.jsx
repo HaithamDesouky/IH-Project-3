@@ -1,8 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './style.scss';
+import React from "react";
+import { Link } from "react-router-dom";
+import "./style.scss";
 
-const Order = props => {
+const Order = (props) => {
   console.log(props);
   return (
     <Link to="/" className="individual-item">
