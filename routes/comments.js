@@ -20,7 +20,7 @@ commentsRouter.post('/create', (request, response, next) => {
           $push: { comments: comment._id }
         },
         { new: true }
-      );
+      ).populate('comments');
     })
     .then(comment => {
       response.json({ comment });

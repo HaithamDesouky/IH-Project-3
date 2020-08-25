@@ -58,10 +58,6 @@ class App extends Component {
       loaded: true
     });
   };
-  /*
-componentDidUpdate(previousState, previousProps){
-  if(this.state)
-}*/
 
   handleSignOut = () => {
     signOut()
@@ -74,12 +70,12 @@ componentDidUpdate(previousState, previousProps){
       });
   };
 
-  handleChangeInQuantity = (credits, value) => {
+  handleChangeInQuantity = (lootBox, value) => {
     const basketClone = [...this.state.basket];
-
     const existingItem = basketClone.find(
-      item => item.credits._id === credits._id
+      lootBox => lootBox.name === lootBox.name
     );
+
     if (existingItem) {
       const editedItem = { ...existingItem };
       editedItem.quantity += value;
@@ -91,7 +87,7 @@ componentDidUpdate(previousState, previousProps){
       }
     } else if (value > 0) {
       const newItem = {
-        credits,
+        lootBox,
         quantity: 1
       };
       basketClone.push(newItem);
@@ -167,7 +163,19 @@ componentDidUpdate(previousState, previousProps){
               exact
             />
             <Route path="/news-feed" component={NewsFeed} exact />
-            <Route path="/shop" component={ShopView} exact />
+            {/* <Route path="/shop" component={ShopView} exact /> */}
+            <Route
+              path="/shop"
+              render={props => (
+                <ShopView
+                  {...props}
+                  basket={this.state.basket}
+                  onChangeQuantity={this.handleChangeInQuantity}
+                />
+              )}
+              exact
+            />
+
             <ProtectedRoute
               path="/post/create"
               component={PostCreationView}

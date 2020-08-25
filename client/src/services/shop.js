@@ -5,4 +5,5 @@ const api = axios.create({
   withCredentials: true
 });
 
-export const listboxes = () => api.get('/shop').then(response => response.data);
+export const listLootBoxes = () =>
+  api.get('/lootBoxes').then(response => response.data);
