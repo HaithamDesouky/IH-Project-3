@@ -1,8 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./style.scss";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './style.scss';
 
-const Navbar = (props) => {
+const Navbar = props => {
   return (
     <nav>
       <Link to="/">Project</Link>
@@ -12,7 +12,7 @@ const Navbar = (props) => {
       {(props.user && (
         <>
           <Link to="/post/create">Create a post</Link>
-          <Link to="/credits">Buy Credits</Link>
+          <Link to="/credits">Credits: {props.user.credits}</Link>
           <Link to="/checkout">Checkout</Link>
           {props.user.admin && <Link to="/admin">Admin</Link>}
           <>
