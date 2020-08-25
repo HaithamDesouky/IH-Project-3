@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './style.scss';
+import './nav.scss';
 
 const Navbar = props => {
   return (
-    <nav>
-      <Link to="/">Project</Link>
+    <nav id="nav">
+      <Link to="/" class="home">
+        Home
+      </Link>
       <Link to="/shop">Shop</Link>
       <Link to="/social/newsfeed">Social Area</Link>
 
@@ -14,10 +16,13 @@ const Navbar = props => {
           <Link to="/post/create">Create a post</Link>
           <Link to="/credits">Credits: {props.user.credits}</Link>
           <Link to="/checkout">Checkout</Link>
+
           {props.user.admin && <Link to="/admin">Admin</Link>}
           <>
             <Link to={`/user/${props.user._id}`}>{props.user.name}</Link>
-            <button onClick={props.onSignOut}>Sign Out</button>
+            <button onClick={props.onSignOut}>
+              <span>Sign Out</span>
+            </button>
           </>
         </>
       )) || (
