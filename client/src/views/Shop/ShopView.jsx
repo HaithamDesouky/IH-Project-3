@@ -38,9 +38,8 @@ class ShopView extends Component {
         <h1>List of LootBoxes</h1>
         {this.state.lootBoxes.map(lootBox => (
           <LootBox
-            picture={lootBox.picture}
-            name={lootBox.name}
-            priceInCredits={lootBox.priceInCredits.amount}
+            key={lootBox._id}
+            lootBox={lootBox}
             onChangeQuantity={this.props.onChangeQuantity}
             basket={this.props.basket}
           />

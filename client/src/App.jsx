@@ -73,7 +73,7 @@ class App extends Component {
   handleChangeInQuantity = (lootBox, value) => {
     const basketClone = [...this.state.basket];
     const existingLootBox = basketClone.find(
-      lootBox => lootBox.name === lootBox.name
+      item => item.lootBox.name === lootBox.name
     );
 
     if (existingLootBox) {
