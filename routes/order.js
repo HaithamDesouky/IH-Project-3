@@ -36,7 +36,12 @@ orderRouter.post('/', (request, response, next) => {
 orderRouter.get('/load', (request, response, next) => {
   const id = request.user._id;
   Order.find({ user: id })
+    .populate({
+      path: 'basket.lootBox',
+      model: 'LootBox'
+    })
     .then(orders => {
+      console.log(orders);
       response.json({ orders });
     })
     .catch(error => {

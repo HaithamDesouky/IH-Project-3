@@ -13,9 +13,9 @@ const schema = new mongoose.Schema(
     total: Number,
     basket: [
       {
-        lootBox: {
+        LootBox: {
           type: mongoose.Schema.Types.ObjectId,
-          ref: 'lootBox'
+          ref: 'LootBox'
         },
         quantity: Number
       }
