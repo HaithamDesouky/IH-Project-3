@@ -1,24 +1,39 @@
-import React, { Component } from 'react';
-import { loadUser } from '../../services/user';
+import React, { Component } from "react";
+import { loadUser } from "../../services/user";
+import { listLootBoxes } from "../../services/shop";
+import LootBox from "../../components/LootBox/LootBox";
 
 export class UserProfile extends Component {
   constructor() {
     super();
     this.state = {
       profile: null,
-      loaded: false
+      loaded: false,
     };
   }
   componentDidMount() {
     loadUser(this.props.match.params.id)
-      .then(profile => this.saveProfileToState(profile))
-      .catch(error => console.log(error));
+      .then((profile) => this.saveProfileToState(profile))
+      .catch((error) => console.log(error));
+
+    listLootBoxes()
+      .then((data) => {
+        const lootBoxes = data.lootBox;
+        this.setState({
+          loaded: true,
+          lootBoxes,
+        });
+        console.log(this.state);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
-  saveProfileToState = profile => {
+  saveProfileToState = (profile) => {
     this.setState({
       profile,
-      loaded: true
+      loaded: true,
     });
   };
 

@@ -1,27 +1,27 @@
-import React, { Component } from 'react';
-import { listPosts } from '../../services/post';
-import PostItem from '../../components/Post';
+import React, { Component } from "react";
+import { listPosts } from "../../services/post";
+import PostItem from "../../components/Post";
 
 class NewsFeed extends Component {
   constructor(props) {
     super(props);
     this.state = {
       loaded: false,
-      posts: []
+      posts: [],
     };
   }
 
   componentDidMount() {
     listPosts()
-      .then(data => {
+      .then((data) => {
         const posts = data.posts;
 
         this.setState({
           posts,
-          loaded: true
+          loaded: true,
         });
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   }
@@ -29,7 +29,7 @@ class NewsFeed extends Component {
   render() {
     return (
       <div className="post-list">
-        {this.state.posts.map(post => (
+        {this.state.posts.map((post) => (
           <PostItem {...post} key={post._id} />
         ))}
       </div>
