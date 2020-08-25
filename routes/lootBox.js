@@ -14,4 +14,22 @@ lootBoxRouter.get('/', (req, res, next) => {
     });
 });
 
+// lootBox.post(
+//   '/',
+//   routeAuthenticationGuard,
+//   (request, response, next) => {
+
+//     Order.create({
+//       creator: request.user._id,
+//       content: request.body.content,
+//       photo: url
+//     })
+//       .then(post => {
+//         response.json({ post });
+//       })
+//       .catch(error => {
+//         next(error);
+//       });
+//   }
+
 module.exports = lootBoxRouter;

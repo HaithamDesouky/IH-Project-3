@@ -2,29 +2,31 @@
 
 const mongoose = require('mongoose');
 
-const schema = new mongoose.Schema({
-  belongsToWallet: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
+const schema = new mongoose.Schema(
+  {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: 'User'
+    },
+    address: String,
+    total: Number,
+    basket: [
+      {
+        LootBox: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'LootBox'
+        },
+        quantity: Number
+      }
+    ]
   },
-  address: String,
-  total: {
-    amount: Number,
-    currency: {
-      type: String,
-      enum: ['Credits']
+  {
+    timestamps: {
+      createdAt: 'creationDate',
+      updatedAt: 'editDate'
     }
-  },
-  basket: [
-    {
-      product: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Credits'
-      },
-      quantity: Number
-    }
-  ],
-  charge: String
-});
+  }
+);
 
 module.exports = mongoose.model('Order', schema);

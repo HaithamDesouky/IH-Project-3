@@ -15,10 +15,10 @@ const passportConfigure = require('./passport-configuration.js');
 const authenticationRouter = require('./routes/authentication');
 const postRouter = require('./routes/post');
 const itemRouter = require('./routes/item');
-const orderRouter = require('./routes/order');
+// const orderRouter = require('./routes/creditOrder');
 const userRouter = require('./routes/user');
 const lootBoxRouter = require('./routes/lootBox');
-
+const orderRouter = require('./routes/order');
 const commentsRouter = require('./routes/comments');
 
 const cors = require('cors');
@@ -67,6 +67,9 @@ app.use('/items', itemRouter);
 app.use('/user', userRouter);
 app.use('/comments', commentsRouter);
 app.use('/lootBoxes', lootBoxRouter);
+app.use('/order', orderRouter);
+
+orderRouter;
 
 userRouter;
 // Catch missing routes and forward to error handler
