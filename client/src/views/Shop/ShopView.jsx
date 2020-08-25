@@ -31,7 +31,6 @@ class ShopView extends Component {
   }
 
   render() {
-    console.log('these are the props', this.props);
     return (
       <div>
         Buy our shit

@@ -1,59 +1,47 @@
-'use strict';
+const express = require('express');
 
-const { Router } = require('express');
-const router = new Router();
-const User = require('../models/user');
 const Order = require('../models/order');
 
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const orderRouter = new express.Router();
+const User = require('./../models/user');
 
-router.post('/order', (req, res, next) => {
-  const { address, token, basket } = req.body;
-  const creditsIds = basket.map(item => item.creditsId);
+orderRouter.post('/', (request, response, next) => {
+  const { user, total, basket, userCredits } = request.body;
+  console.log(request.body);
+  const credits = Number(userCredits) - Number(total);
+  console.log(credits);
 
-  let total;
-
-  // Loading all credits on wallet
-  User.findById(user)
-    .then(credits => {
-      // Calculating total price
-      const amount = basket.reduce((sum, item) => {
-        const pcredits = pcredits.find(
-          prod => prod._id.toString() === item.creditsId
-        );
-        return sum + credits.price.amount * item.quantity;
-      }, 0);
-      const currency = credits[0].price.currency;
-      total = {
-        amount,
-        currency
-      };
-      // Make charge to payment method
-
-      return stripe.charges.create({
-        amount: total.amount,
-        currency: total.currency,
-        source: token,
-        description: 'Purchase of Credits'
-      });
-    })
-    .then(charge => {
-      // Create an order document
-      return Order.create({
-        address,
-        total,
-        charge: charge.id,
-        basket: basket.map(item => ({ ...item, credits: item.creditsId }))
-      });
+  Order.create({
+    user,
+    total,
+    basket
+  })
+    .then(() => {
+      User.findByIdAndUpdate(user, {
+        credits: credits
+      })
+        .then(data => console.log(data))
+        .catch(error => console.log(error));
     })
     .then(order => {
-      // We're done, send order object to client
-      res.json({ order });
+      response.json({ order });
     })
+
     .catch(error => {
       console.log(error);
       next(error);
     });
 });
 
-module.exports = router;
+orderRouter.get('/load', (request, response, next) => {
+  const id = request.user._id;
+  Order.find({ user: id })
+    .then(orders => {
+      response.json({ orders });
+    })
+    .catch(error => {
+      next(error);
+    });
+});
+
+module.exports = orderRouter;

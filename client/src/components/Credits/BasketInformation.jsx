@@ -1,12 +1,31 @@
 import React from 'react';
+import { createOrder } from './../../services/order';
 
-import Price from './Price';
+import { Link } from 'react-router-dom';
 
-const BasketInformation = ({ list }) => {
-  const totalQuantity = list.reduce((sum, item) => sum + item.quantity, 0);
-  const totalPriceAmount = list.reduce((sum, item) => {
-    return sum + item.user.credits * item.quantity;
+const BasketInformation = ({ basket, user }) => {
+  function handleFormSubmission(event) {
+    event.preventDefault();
+    const id = user._id;
+    const order = {
+      user: id,
+      total: totalPriceAmount,
+      basket: [...basket],
+      userCredits: user.credits
+    };
+    createOrder(order)
+      .then(order => console.log(order))
+      .catch(error => console.log(error));
+    console.log('loggin order', order);
+  }
+  console.log('props for basketinfo', user);
+
+  const totalQuantity = basket.reduce((sum, item) => sum + item.quantity, 0);
+  const totalPriceAmount = basket.reduce((sum, item) => {
+    return sum + item.lootBox.priceInCredits.amount * item.quantity;
   }, 0);
+
+  console.log('totalPriceAmount: ', totalPriceAmount);
 
   return (
     <div>
@@ -15,7 +34,19 @@ const BasketInformation = ({ list }) => {
         {totalQuantity}
       </span>
       {'💰'}
-      <Price {...totalPriceAmount} />
+      {totalPriceAmount}
+
+      {user.credits < totalPriceAmount ? (
+        <Link to="/buy-credits">
+          {' '}
+          Unfortunately you don't have enough credits for this purchase. Follow
+          the link to buy more credits
+        </Link>
+      ) : (
+        <form onSubmit={handleFormSubmission}>
+          <button>Purchase</button>
+        </form>
+      )}
     </div>
   );
 };
