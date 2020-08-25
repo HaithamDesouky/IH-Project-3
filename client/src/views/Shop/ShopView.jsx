@@ -31,17 +31,15 @@ class ShopView extends Component {
   }
 
   render() {
-    console.log(this.props);
+    console.log('these are the props', this.props);
     return (
       <div>
         Buy our shit
         <h1>List of LootBoxes</h1>
         {this.state.lootBoxes.map(lootBox => (
           <LootBox
-            picture={lootBox.picture}
-            name={lootBox.name}
-            priceInCredits={lootBox.priceInCredits.amount}
-            quantity={0}
+            key={lootBox._id}
+            lootBox={lootBox}
             onChangeQuantity={this.props.onChangeQuantity}
             basket={this.props.basket}
           />
