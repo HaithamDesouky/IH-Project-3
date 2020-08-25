@@ -31,7 +31,7 @@ class ShopView extends Component {
   }
 
   render() {
-    console.log(this.props);
+    console.log('these are the props', this.props);
     return (
       <div>
         Buy our shit
@@ -41,7 +41,6 @@ class ShopView extends Component {
             picture={lootBox.picture}
             name={lootBox.name}
             priceInCredits={lootBox.priceInCredits.amount}
-            quantity={0}
             onChangeQuantity={this.props.onChangeQuantity}
             basket={this.props.basket}
           />

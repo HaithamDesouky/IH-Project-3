@@ -18,7 +18,7 @@ const singleBox = props => {
             +
           </button>
         </div>
-        0
+
         {
           <p>
             <strong>Price: </strong>

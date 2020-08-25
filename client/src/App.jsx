@@ -72,25 +72,25 @@ class App extends Component {
 
   handleChangeInQuantity = (lootBox, value) => {
     const basketClone = [...this.state.basket];
-    const existingItem = basketClone.find(
+    const existingLootBox = basketClone.find(
       lootBox => lootBox.name === lootBox.name
     );
 
-    if (existingItem) {
-      const editedItem = { ...existingItem };
-      editedItem.quantity += value;
-      const index = basketClone.indexOf(existingItem);
-      if (editedItem.quantity > 0) {
-        basketClone.splice(index, 1, editedItem);
+    if (existingLootBox) {
+      const editedLootBox = { ...existingLootBox };
+      editedLootBox.quantity += value;
+      const index = basketClone.indexOf(existingLootBox);
+      if (editedLootBox.quantity > 0) {
+        basketClone.splice(index, 1, editedLootBox);
       } else {
         basketClone.splice(index, 1);
       }
     } else if (value > 0) {
-      const newItem = {
+      const newLootBox = {
         lootBox,
         quantity: 1
       };
-      basketClone.push(newItem);
+      basketClone.push(newLootBox);
     }
 
     this.setState({
