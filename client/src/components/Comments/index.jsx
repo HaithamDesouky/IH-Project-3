@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './style.scss';
-import defaultPhoto from './default.jfif';
+import React from "react";
+import { Link } from "react-router-dom";
+import "./style.scss";
+import defaultPhoto from "./default.png";
 
 const Comment = ({ _id, creator, content, createdAt }) => {
   return (
