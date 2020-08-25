@@ -17,6 +17,8 @@ const postRouter = require('./routes/post');
 const itemRouter = require('./routes/item');
 const orderRouter = require('./routes/order');
 const userRouter = require('./routes/user');
+const lootBoxRouter = require('./routes/lootBox');
+
 const commentsRouter = require('./routes/comments');
 
 const cors = require('cors');
@@ -64,6 +66,7 @@ app.use('/authentication', authenticationRouter);
 app.use('/items', itemRouter);
 app.use('/user', userRouter);
 app.use('/comments', commentsRouter);
+app.use('/lootBoxes', lootBoxRouter);
 
 userRouter;
 // Catch missing routes and forward to error handler

@@ -18,8 +18,7 @@ class SinglePostView extends Component {
       }
     };
   }
-
-  componentDidMount() {
+  loadData = () => {
     const id = this.props.match.params.id;
     loadPost(id)
       .then(data => {
@@ -34,6 +33,10 @@ class SinglePostView extends Component {
       .catch(error => {
         console.log(error);
       });
+  };
+
+  componentDidMount() {
+    this.loadData();
   }
 
   handleCommentCreation = () => {
@@ -41,7 +44,7 @@ class SinglePostView extends Component {
     const id = this.props.match.params.id;
     createComment(newComment)
       .then(data => {
-        this.componentDidMount();
+        this.loadData();
       })
       .catch(error => {
         console.log(error);
