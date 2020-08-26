@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './LootBox.scss';
+
 const LootBox = props => {
   // const { product, basket } = props;
 
@@ -7,8 +9,8 @@ const LootBox = props => {
   const existingLootBox = basket.find(item => item.lootBox._id === lootBox._id);
   const quantity = existingLootBox ? existingLootBox.quantity : 0;
   return (
-    <div key={props.lootBox._id} className="lootbox">
-      <h1>{props.lootBox.name}</h1>
+    <div key={props.lootBox._id} className="lootbox-single">
+      <h3>{props.lootBox.name}</h3>
       <img
         src={props.lootBox.picture}
         alt={'LootBox.name'}

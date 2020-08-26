@@ -8,6 +8,9 @@ import {
   ElementsConsumer,
   CardElement
 } from '@stripe/react-stripe-js';
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
+// const notify = () => toast('Congratulations, the payment was successful!');
 
 const stripeApiPublicKey =
   'pk_test_516xd9kHBGALjgD8KAhIM9Zlwqwum82KmLf1Bb5KoTDwPSBBMXtLyfOCnztZVS8LWSvv3n1ZHl9GeXgec6WgmUXQK00gNVB5J4i';
