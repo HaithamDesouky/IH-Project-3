@@ -4,6 +4,7 @@ import {
   Switch,
   Route,
   Redirect,
+<<<<<<< HEAD
   withRouter,
 } from "react-router-dom";
 import { loadMe, signOut } from "./services/authentication";
@@ -23,6 +24,26 @@ import ItemCreationView from "./views/Admin/ItemCreationView";
 import Navbar from "./components/Navbar";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AdminRoute from "./components/AdminRoute";
+=======
+  withRouter
+} from 'react-router-dom';
+import { loadMe, signOut } from './services/authentication';
+import NewsFeed from './views/NewsFeed';
+import SinglePostView from './views/Post/SingleView';
+import PostEditView from './views/Post/EditView';
+import PostCreationView from './views/Post/CreationView';
+import AuthenticationSignUpView from './views/Authentication/SignUpView';
+import AuthenticationSignInView from './views/Authentication/SignInView';
+import CheckoutView from './views/Credits/CheckoutView';
+import BuyCreditsView from './views/Credits/BuyCreditsView';
+import ErrorView from './views/ErrorView';
+import HomeView from './views/Home/HomeView';
+import ShopView from './views/Shop/ShopView';
+import ItemCreationView from './views/Admin/ItemCreationView';
+import Navbar from './components/Navbar';
+import ProtectedRoute from './components/ProtectedRoute';
+import AdminRoute from './components/AdminRoute';
+>>>>>>> 7bda6b1b036d6a0b1345e46b26c9a7d7cb33708f
 
 import { useHistory } from "react-router-dom";
 import AllItemsView from "./views/Admin/AllItemsView";
@@ -42,6 +63,10 @@ class App extends Component {
   }
 
   componentDidMount() {
+    this.loadUser();
+  }
+
+  loadUser = () => {
     loadMe()
       .then((data) => {
         const user = data.user;
@@ -50,7 +75,7 @@ class App extends Component {
       .then((error) => {
         console.log(error);
       });
-  }
+  };
 
   handleUserUpdate = (user) => {
     ("handle update user");
@@ -103,6 +128,7 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar user={this.state.user} onSignOut={this.handleSignOut} />
+        <h1>Lootbox App</h1>
         {(this.state.loaded && (
           <Switch>
             <Route path="/" component={HomeView} exact />
@@ -129,18 +155,21 @@ class App extends Component {
               redirect="/error"
               exact
             />
-            <ProtectedRoute
+            <Route
               path="/credits"
+<<<<<<< HEAD
               render={(props) => (
                 <CreditsView
+=======
+              render={props => (
+                <BuyCreditsView
+>>>>>>> 7bda6b1b036d6a0b1345e46b26c9a7d7cb33708f
                   {...props}
+                  loadUser={this.loadUser}
                   basket={this.state.basket}
                   onChangeQuantity={this.handleChangeInQuantity}
                 />
               )}
-              authorized={this.state.user}
-              redirect="/error"
-              exact
             />
             <ProtectedRoute
               path="/checkout"
@@ -148,6 +177,7 @@ class App extends Component {
                 <CheckoutView
                   {...props}
                   user={this.state.user}
+                  loadUser={this.loadUser}
                   basket={this.state.basket}
                   onChangeQuantity={this.handleChangeInQuantity}
                 />
@@ -169,6 +199,7 @@ class App extends Component {
               path="/shop"
               render={(props) => (
                 <ShopView
+                  classname="Shop"
                   {...props}
                   basket={this.state.basket}
                   onChangeQuantity={this.handleChangeInQuantity}

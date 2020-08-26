@@ -1,9 +1,9 @@
 import React from 'react';
 import { createOrder } from './../../services/order';
 
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
-const BasketInformation = ({ basket, user }) => {
+const BasketInformation = ({ basket, user, loadUser, history }) => {
   function handleFormSubmission(event) {
     event.preventDefault();
     const id = user._id;
@@ -14,11 +14,14 @@ const BasketInformation = ({ basket, user }) => {
       userCredits: user.credits
     };
     createOrder(order)
-      .then(order => console.log(order))
+      .then(order => {
+        console.log(order);
+        console.log('props', loadUser);
+        loadUser();
+        history.push(`/user/${id}`);
+      })
       .catch(error => console.log(error));
-    console.log('loggin order', order);
   }
-  console.log('props for basketinfo', user);
 
   const totalQuantity = basket.reduce((sum, item) => sum + item.quantity, 0);
   const totalPriceAmount = basket.reduce((sum, item) => {
@@ -51,4 +54,4 @@ const BasketInformation = ({ basket, user }) => {
   );
 };
 
-export default BasketInformation;
+export default withRouter(BasketInformation);

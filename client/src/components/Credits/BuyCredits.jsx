@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { orderCredits } from '../../services/creditsOrder';
+import { withRouter } from 'react-router-dom';
 
 import { loadStripe } from '@stripe/stripe-js';
 import {
@@ -6,8 +8,12 @@ import {
   ElementsConsumer,
   CardElement
 } from '@stripe/react-stripe-js';
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
+// const notify = () => toast('Congratulations, the payment was successful!');
 
-const stripeApiPublicKey = process.env.REACT_APP_STRIPE_PUBLIC_KEY;
+const stripeApiPublicKey =
+  'pk_test_516xd9kHBGALjgD8KAhIM9Zlwqwum82KmLf1Bb5KoTDwPSBBMXtLyfOCnztZVS8LWSvv3n1ZHl9GeXgec6WgmUXQK00gNVB5J4i';
 
 const cardOptions = {
   style: {
@@ -23,7 +29,7 @@ const cardOptions = {
   }
 };
 
-class CheckoutForm extends Component {
+class BuyCredits extends Component {
   constructor() {
     super();
     this.state = {
@@ -31,16 +37,29 @@ class CheckoutForm extends Component {
     };
   }
 
+  handleCheckout = ({ credits, address, token }) => {
+    orderCredits({ credits, address, token })
+      .then(data => {
+        this.props.loadUser();
+        this.props.history.push('/');
+      })
+      .catch(error => {
+        console.log('Order failed', error);
+      });
+  };
+
   handleFormSubmission = (event, stripe, elements) => {
     event.preventDefault();
     stripe
       .createToken(elements.getElement(CardElement))
       .then(data => {
         const token = data.token.id;
-        const { address } = this.state;
-        this.props.onCheckout({
+        const { credits, address } = this.state;
+
+        this.handleCheckout({
           token,
-          address
+          address,
+          credits
         });
       })
       .catch(error => {
@@ -57,7 +76,7 @@ class CheckoutForm extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div>
         <Elements stripe={loadStripe(stripeApiPublicKey)}>
           <ElementsConsumer>
             {({ stripe, elements }) => (
@@ -66,7 +85,7 @@ class CheckoutForm extends Component {
                   this.handleFormSubmission(event, stripe, elements)
                 }
               >
-                <label htmlFor="input-address">Billing Adress</label>
+                <label htmlFor="input-address">Shipping Address</label>
                 <input
                   id="input-address"
                   type="text"
@@ -75,6 +94,18 @@ class CheckoutForm extends Component {
                   value={this.state.address}
                   onChange={this.handleInputChange}
                 />
+
+                <select
+                  id="credit-pack"
+                  name="credits"
+                  onChange={this.handleInputChange}
+                >
+                  <option>How many credits do you want to buy?</option>
+                  <option value="250">Credits: 250 for €25</option>
+                  <option value="500">Credits: 500 for €50</option>
+                  <option value="1000">Credits: 1000 for €100</option>
+                  <option value="2000">Credits: 2000 for €200</option>
+                </select>
 
                 <label>Credit Card details</label>
                 <CardElement options={cardOptions} />
@@ -88,5 +119,4 @@ class CheckoutForm extends Component {
     );
   }
 }
-
-export default CheckoutForm;
+export default withRouter(BuyCredits);

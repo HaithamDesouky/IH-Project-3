@@ -1,10 +1,19 @@
+<<<<<<< HEAD
 import React from "react";
 import { Link } from "react-router-dom";
 import "./nav.scss";
 
 const Navbar = (props) => {
+=======
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './nav.scss';
+import { slide as Navbar } from 'react-burger-menu';
+
+export default props => {
+>>>>>>> 7bda6b1b036d6a0b1345e46b26c9a7d7cb33708f
   return (
-    <nav id="nav">
+    <Navbar {...props}>
       <Link to="/" class="home">
         Home
       </Link>
@@ -31,8 +40,6 @@ const Navbar = (props) => {
           <Link to="/authentication/sign-in">Sign In</Link>
         </>
       )}
-    </nav>
+    </Navbar>
   );
 };
-
-export default Navbar;
