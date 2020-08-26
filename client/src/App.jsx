@@ -172,6 +172,7 @@ class App extends Component {
               path="/shop"
               render={props => (
                 <ShopView
+                  classname="Shop"
                   {...props}
                   basket={this.state.basket}
                   onChangeQuantity={this.handleChangeInQuantity}
