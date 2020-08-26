@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./HomeView.css";
+import game from "./game.png";
+import movie from "./movie.png";
+import clothes from "./clothes.png";
 // import { listProducts } from '../services/product';
 
 // import ProductItem from '../components/ProductItem';
@@ -27,9 +30,17 @@ class HomeView extends Component {
         </div>
 
         <div className="second">
-          <div className="items">Item 1</div>
-          <div className="items">Item 1</div>
-          <div className="items">Item 1</div>
+          <div className="items">
+            <img src={game} /> Magnetic Katamari Damacy Figure
+          </div>
+          <div className="items">
+            <img src={movie} />
+            Aliens Pencil Sharpener
+          </div>
+          <div className="items">
+            <img src={clothes} />
+            Spider-Man T-shirt
+          </div>
         </div>
 
         <div className="third">
