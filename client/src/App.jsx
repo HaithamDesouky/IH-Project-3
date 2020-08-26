@@ -16,7 +16,7 @@ import AuthenticationSignInView from './views/Authentication/SignInView';
 import CheckoutView from './views/Credits/CheckoutView';
 import BuyCreditsView from './views/Credits/BuyCreditsView';
 import ErrorView from './views/ErrorView';
-import HomeView from './views/HomeView';
+import HomeView from './views/Home/HomeView';
 import ShopView from './views/Shop/ShopView';
 import ItemCreationView from './views/Admin/ItemCreationView';
 import Navbar from './components/Navbar';
@@ -54,14 +54,6 @@ class App extends Component {
         console.log(error);
       });
   };
-
-  componentDidUpdate(previousProps, previousState) {
-    if (previousState.user) {
-      if (previousState.user.credits !== this.state.user.credits) {
-        this.loadUser();
-      }
-    }
-  }
 
   handleUserUpdate = user => {
     ('handle update user');
@@ -114,6 +106,7 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar user={this.state.user} onSignOut={this.handleSignOut} />
+        <h1>Lootbox App</h1>
         {(this.state.loaded && (
           <Switch>
             <Route path="/" component={HomeView} exact />

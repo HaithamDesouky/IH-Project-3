@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  color: white;
 }
 
 body {
@@ -7,10 +8,13 @@ body {
   margin: 0 auto;
   max-width: 60em;
   line-height: 2;
+  margin-left: 3rem;
+  background-color: black;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
 
 img {
@@ -19,7 +23,7 @@ img {
 
 a {
   display: flex;
-  color: inherit;
+  color: white;
   text-decoration: none;
 }
 
@@ -34,10 +38,11 @@ form {
 
 input,
 textarea,
+label,
 button {
   border: 1px solid lightgray;
   font: inherit;
-  color: inherit;
+  color: white;
   line-height: inherit;
   background-color: transparent;
   padding: 1em;
@@ -48,5 +53,22 @@ button {
   border: 1px solid rgb(189, 62, 23);
   border-radius: 0.5em;
   padding: 1em;
+  color: white;
+}
+
+.container {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+a {
   color: white;
 }
