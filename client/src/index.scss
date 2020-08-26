@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
   color: white;
+  margin: 0;
 }
 
 body {
@@ -9,7 +10,10 @@ body {
   max-width: 60em;
   line-height: 2;
   margin-left: 3rem;
-  background-color: black;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 1)),
+    url('./views/pattern.jpg');
+  width: 100vw;
+  background-position: center; /* Center the image */
 }
 
 code {
