@@ -2,13 +2,15 @@
   // display: flex;
   // flex-direction: column;
   padding: 1em;
-  border-radius: 3em;
-  box-shadow: 0 0.25em 1.5em -0.5em hsla(220, 30%, 80%, 0.5);
-  margin-bottom: 1em;
+  border-radius: 1em;
+  box-shadow: 0 0.25em 1.5em -0.5em white;
 }
-img {
-  width: 6em;
+.Lootboxpic {
+  width: 15em;
   margin-right: 1em;
+  border-radius: 420%;
+  box-shadow: 0px -4px 15px 0px white;
+  margin: 2rem 0;
 }
 
 .lootbox-single {
@@ -18,4 +20,8 @@ img {
   flex-wrap: wrap;
   align-content: center;
   align-items: center;
+
+  span {
+    padding: 1rem;
+  }
 }

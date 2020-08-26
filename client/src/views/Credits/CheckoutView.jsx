@@ -14,15 +14,17 @@ class CheckoutView extends Component {
     return (
       <div>
         <h1>Products in basket</h1>
-        {(basket.length &&
-          basket.map(item => (
-            <LootBox
-              key={item.lootBox._id}
-              lootBox={item.lootBox}
-              basket={this.props.basket}
-              onChangeQuantity={this.props.onChangeQuantity}
-            />
-          ))) || <p>There are no items in the basket</p>}
+        <div className="container">
+          {(basket.length &&
+            basket.map(item => (
+              <LootBox
+                key={item.lootBox._id}
+                lootBox={item.lootBox}
+                basket={this.props.basket}
+                onChangeQuantity={this.props.onChangeQuantity}
+              />
+            ))) || <p>There are no items in the basket</p>}
+        </div>
         <h2>Totals</h2>
         <BasketInformation
           loadUser={this.props.loadUser}

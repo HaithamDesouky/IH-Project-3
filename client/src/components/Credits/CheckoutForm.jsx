@@ -57,7 +57,7 @@ class CheckoutForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <Elements stripe={loadStripe(stripeApiPublicKey)}>
           <ElementsConsumer>
             {({ stripe, elements }) => (

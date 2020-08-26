@@ -3,6 +3,7 @@ import { listLootBoxes } from './../../services/shop';
 import LootBox from '../../components/LootBox/LootBox';
 
 import './ShopView.scss';
+import { Link } from 'react-router-dom';
 
 class ShopView extends Component {
   constructor() {
@@ -30,8 +31,8 @@ class ShopView extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Welcome to the LootBox Store!</h1>
+      <div className="container">
+        <h1>Choose your LootBox!</h1>
 
         <div className="container">
           {this.state.lootBoxes.map(lootBox => (
@@ -43,6 +44,10 @@ class ShopView extends Component {
             />
           ))}
         </div>
+
+        <Link className="home-links" to="/checkout">
+          Checkout
+        </Link>
       </div>
     );
   }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import BuyCredits from './../../components/Credits/BuyCredits';
 import { withRouter } from 'react-router-dom';
 import { throws } from 'assert';
+import './credits.scss';
 
 class BuyCreditsView extends Component {
   constructor() {
@@ -13,9 +14,11 @@ class BuyCreditsView extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Buy Credits</h1>
-        <BuyCredits loadUser={this.props.loadUser} />
+      <div className="container ">
+        <div className="credits-div">
+          <h1>Buy Credits</h1>
+          <BuyCredits loadUser={this.props.loadUser} />
+        </div>
       </div>
     );
   }
