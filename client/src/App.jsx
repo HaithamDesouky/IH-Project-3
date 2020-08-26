@@ -14,7 +14,7 @@ import PostCreationView from './views/Post/CreationView';
 import AuthenticationSignUpView from './views/Authentication/SignUpView';
 import AuthenticationSignInView from './views/Authentication/SignInView';
 import CheckoutView from './views/Credits/CheckoutView';
-import CreditsView from './views/Credits/CreditsView';
+import BuyCreditsView from './views/Credits/BuyCreditsView';
 import ErrorView from './views/ErrorView';
 import HomeView from './views/HomeView';
 import ShopView from './views/Shop/ShopView';
@@ -128,18 +128,15 @@ class App extends Component {
               redirect="/error"
               exact
             />
-            <ProtectedRoute
+            <Route
               path="/credits"
               render={props => (
-                <CreditsView
+                <BuyCreditsView
                   {...props}
                   basket={this.state.basket}
                   onChangeQuantity={this.handleChangeInQuantity}
                 />
               )}
-              authorized={this.state.user}
-              redirect="/error"
-              exact
             />
             <ProtectedRoute
               path="/checkout"

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import BasketInformation from '../../components/Credits/BasketInformation';
-import CreditsPack from '../../components/Credits/CreditsPack';
+// import CreditsPack from '../../components/Credits/CreditsPack';
 import CheckoutForm from '../../components/Credits/CheckoutForm';
 
 import { createOrder } from '../../services/order';
