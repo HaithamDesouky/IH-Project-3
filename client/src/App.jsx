@@ -157,6 +157,7 @@ class App extends Component {
                 <CheckoutView
                   {...props}
                   user={this.state.user}
+                  loadUser={this.loadUser}
                   basket={this.state.basket}
                   onChangeQuantity={this.handleChangeInQuantity}
                 />

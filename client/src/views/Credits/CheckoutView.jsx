@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import BasketInformation from '../../components/Credits/BasketInformation';
 // import CreditsPack from '../../components/Credits/CreditsPack';
 import CheckoutForm from '../../components/Credits/CheckoutForm';
+import { withRouter } from 'react-router-dom';
 
 import { createOrder } from '../../services/order';
 import LootBox from './../../components/LootBox/LootBox';
@@ -23,10 +24,14 @@ class CheckoutView extends Component {
             />
           ))) || <p>There are no items in the basket</p>}
         <h2>Totals</h2>
-        <BasketInformation user={user} basket={basket} />
+        <BasketInformation
+          loadUser={this.props.loadUser}
+          user={user}
+          basket={basket}
+        />
       </div>
     );
   }
 }
 
-export default CheckoutView;
+export default withRouter(CheckoutView);
