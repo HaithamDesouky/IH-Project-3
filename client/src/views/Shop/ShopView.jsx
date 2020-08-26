@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { listLootBoxes } from './../../services/shop';
 import LootBox from '../../components/LootBox/LootBox';
-import anime from './images/anime.png';
-import entertainment from './images/entertainment.jpg';
-import gaming from './images/gaming.svg';
-import mystery from './images/mystery.png';
+
+import './ShopView.scss';
 
 class ShopView extends Component {
   constructor() {
@@ -33,16 +31,18 @@ class ShopView extends Component {
   render() {
     return (
       <div>
-        Buy our shit
-        <h1>List of LootBoxes</h1>
-        {this.state.lootBoxes.map(lootBox => (
-          <LootBox
-            key={lootBox._id}
-            lootBox={lootBox}
-            onChangeQuantity={this.props.onChangeQuantity}
-            basket={this.props.basket}
-          />
-        ))}
+        <h1>Welcome to the LootBox Store!</h1>
+
+        <div className="container">
+          {this.state.lootBoxes.map(lootBox => (
+            <LootBox
+              key={lootBox._id}
+              lootBox={lootBox}
+              onChangeQuantity={this.props.onChangeQuantity}
+              basket={this.props.basket}
+            />
+          ))}
+        </div>
       </div>
     );
   }

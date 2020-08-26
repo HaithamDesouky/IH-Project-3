@@ -1,0 +1,12 @@
+h1 {
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  flex-direction: row;
+  background-color: grey;
+}
