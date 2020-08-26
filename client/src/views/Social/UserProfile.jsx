@@ -4,6 +4,7 @@ import { loadUser } from "../../services/user";
 import { loadOrders } from "../../services/order";
 import Order from "../../components/Orders";
 import NavBar from "../../components/Navbar";
+import "./UserProfile.scss";
 
 export class UserProfile extends Component {
   constructor() {
@@ -36,11 +37,13 @@ export class UserProfile extends Component {
 
   render = () => {
     return (
-      <div>
+      <div class="profile">
         {this.state.loaded && (
           <div>
             {this.state.profile.user.photo && (
-              <img src={this.state.profile.user.photo} alt="UserPhoto" />
+              <div>
+                <img src={this.state.profile.user.photo} alt="UserPhoto" />
+              </div>
             )}
             <h1>{this.state.profile.user.name}</h1>
             <h2>Followers:{this.state.profile.user.followers.length} </h2>

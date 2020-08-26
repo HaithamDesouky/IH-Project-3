@@ -1,33 +1,10 @@
-import React, { Component } from 'react';
-// import { listProducts } from '../services/product';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import "./HomeView.scss";
 
-// import ProductItem from '../components/ProductItem';
-
-class HomeView extends Component {
-  constructor() {
-    super();
-    this.state = {
-      loaded: true,
-      products: []
-    };
-  }
-
-  componentDidMount() {
-    // listProducts()
-    //   .then(data => {
-    //     const products = data.products;
-    //     this.setState({
-    //       loaded: true,
-    //       products
-    //     });
-    //   })
-    //   .catch(error => {
-    //     console.log(error);
-    //   });
-  }
-
+class HomeView extends React.Component {
   render() {
-    return <div>Welcome you gambling degenerate</div>;
+    return <div class="welcome">Welcome you gambling degenerate</div>;
   }
 }
 

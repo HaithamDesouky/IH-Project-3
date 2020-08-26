@@ -7,16 +7,26 @@ const User = require('./../models/user');
 
 orderRouter.post('/', (request, response, next) => {
   const { user, total, basket, userCredits } = request.body;
-  console.log(request.body);
-  const credits = Number(userCredits) - Number(total);
-  console.log(credits);
 
+  const credits = Number(userCredits) - Number(total);
+  // const id = basket.lootBox._id;
+  // const quantity = basket.lootBox.quantity;
+
+  console.log('hey basket', basket);
+
+  // let array = [];
+
+  // for (let item of basket) {
+  //   array.push({ id: item.lootBox._id, quantity: item.quantity });
+  // }
+  // console.log('lmap', array);
   Order.create({
     user,
     total,
     basket
   })
-    .then(() => {
+    .then(data => {
+      console.log(data);
       User.findByIdAndUpdate(user, {
         credits: credits
       })
