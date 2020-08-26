@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import './HomeView.css';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import "./HomeView.css";
 // import { listProducts } from '../services/product';
 
 // import ProductItem from '../components/ProductItem';
@@ -10,7 +10,7 @@ class HomeView extends Component {
     super();
     this.state = {
       loaded: true,
-      products: []
+      products: [],
     };
   }
 
@@ -21,7 +21,9 @@ class HomeView extends Component {
           <h1>Today is your lucky day!</h1>
           <h3>We have many lootboxes for your to try</h3>
 
-          <Link className="home-links">Check out our amazing boxes here</Link>
+          <Link to="/shop" className="home-links">
+            Check out our amazing boxes here
+          </Link>
         </div>
 
         <div className="second">
@@ -31,7 +33,7 @@ class HomeView extends Component {
         </div>
 
         <div className="third">
-          <Link className="home-links">
+          <Link to="/social/newsfeed" className="home-links">
             See what other members have gotten from their lootboxes!
           </Link>
         </div>
