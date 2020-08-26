@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import BuyCredits from './../../components/Credits/BuyCredits';
+import { withRouter } from 'react-router-dom';
+import { throws } from 'assert';
 
 class BuyCreditsView extends Component {
   constructor() {
     super();
-    this.state = {
-      loaded: false,
-      credits: []
-    };
+    this.state = {};
   }
 
   componentDidMount() {}
@@ -16,10 +15,10 @@ class BuyCreditsView extends Component {
     return (
       <div>
         <h1>Buy Credits</h1>
-        <BuyCredits />
+        <BuyCredits loadUser={this.props.loadUser} />
       </div>
     );
   }
 }
 
-export default BuyCreditsView;
+export default withRouter(BuyCreditsView);

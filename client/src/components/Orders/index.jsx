@@ -6,16 +6,18 @@ const Order = props => {
   console.log('lolol', props);
   return (
     <Link to="/" className="individual-item">
-      {/* {(photo && <img src={photo} alt={description} />) || (
-        // <img src={defaultPhoto} alt={description} />
-      )} */}
       <div>
-        {/* {props.basket.length && <h3>{props.basket[0]}</h3>} */}
-        {/*  */}
-        <strong>{props.total}</strong>
+        <strong>Total Credits: {props.total}</strong>
+        <strong>
+          Order:{' '}
+          {props.basket.length &&
+            props.basket.map(
+              item => item.quantity + 'x ' + item.lootBox.name + ' | '
+            )}
+        </strong>
         {
           /* <p>{description}</p>*/
-          <small>{new Date(props.creationDate).toGMTString()}</small>
+          <small>Date: {new Date(props.creationDate).toGMTString()}</small>
         }
       </div>
     </Link>

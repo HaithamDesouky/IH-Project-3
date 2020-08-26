@@ -9,17 +9,9 @@ orderRouter.post('/', (request, response, next) => {
   const { user, total, basket, userCredits } = request.body;
 
   const credits = Number(userCredits) - Number(total);
-  // const id = basket.lootBox._id;
-  // const quantity = basket.lootBox.quantity;
 
   console.log('hey basket', basket);
 
-  // let array = [];
-
-  // for (let item of basket) {
-  //   array.push({ id: item.lootBox._id, quantity: item.quantity });
-  // }
-  // console.log('lmap', array);
   Order.create({
     user,
     total,

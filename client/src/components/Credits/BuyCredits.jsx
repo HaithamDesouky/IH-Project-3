@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { orderCredits } from '../../services/creditsOrder';
+import { withRouter } from 'react-router-dom';
 
 import { loadStripe } from '@stripe/stripe-js';
 import {
@@ -7,7 +9,8 @@ import {
   CardElement
 } from '@stripe/react-stripe-js';
 
-const stripeApiPublicKey = process.env.REACT_APP_STRIPE_PUBLIC_KEY;
+const stripeApiPublicKey =
+  'pk_test_516xd9kHBGALjgD8KAhIM9Zlwqwum82KmLf1Bb5KoTDwPSBBMXtLyfOCnztZVS8LWSvv3n1ZHl9GeXgec6WgmUXQK00gNVB5J4i';
 
 const cardOptions = {
   style: {
@@ -31,17 +34,29 @@ class BuyCredits extends Component {
     };
   }
 
+  handleCheckout = ({ credits, address, token }) => {
+    orderCredits({ credits, address, token })
+      .then(data => {
+        this.props.loadUser();
+        this.props.history.push('/');
+      })
+      .catch(error => {
+        console.log('Order failed', error);
+      });
+  };
+
   handleFormSubmission = (event, stripe, elements) => {
     event.preventDefault();
     stripe
       .createToken(elements.getElement(CardElement))
       .then(data => {
         const token = data.token.id;
+        const { credits, address } = this.state;
 
-        console.log('this is the state of the credits', this.state);
-        this.props.onCheckout({
-          token
-          // address
+        this.handleCheckout({
+          token,
+          address,
+          credits
         });
       })
       .catch(error => {
@@ -76,6 +91,19 @@ class BuyCredits extends Component {
                   value={this.state.address}
                   onChange={this.handleInputChange}
                 />
+
+                <select
+                  id="credit-pack"
+                  name="credits"
+                  onChange={this.handleInputChange}
+                >
+                  <option>How many credits do you want to buy?</option>
+                  <option value="250">Credits: 250 for €25</option>
+                  <option value="500">Credits: 500 for €50</option>
+                  <option value="1000">Credits: 1000 for €100</option>
+                  <option value="2000">Credits: 2000 for €200</option>
+                </select>
+
                 <label>Credit Card details</label>
                 <CardElement options={cardOptions} />
 
@@ -88,4 +116,4 @@ class BuyCredits extends Component {
     );
   }
 }
-export default BuyCredits;
+export default withRouter(BuyCredits);

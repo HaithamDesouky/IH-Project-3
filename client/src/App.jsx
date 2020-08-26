@@ -41,6 +41,10 @@ class App extends Component {
   }
 
   componentDidMount() {
+    this.loadUser();
+  }
+
+  loadUser = () => {
     loadMe()
       .then(data => {
         const user = data.user;
@@ -49,6 +53,14 @@ class App extends Component {
       .then(error => {
         console.log(error);
       });
+  };
+
+  componentDidUpdate(previousProps, previousState) {
+    if (previousState.user) {
+      if (previousState.user.credits !== this.state.user.credits) {
+        this.loadUser();
+      }
+    }
   }
 
   handleUserUpdate = user => {
@@ -133,6 +145,7 @@ class App extends Component {
               render={props => (
                 <BuyCreditsView
                   {...props}
+                  loadUser={this.loadUser}
                   basket={this.state.basket}
                   onChangeQuantity={this.handleChangeInQuantity}
                 />

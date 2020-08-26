@@ -16,9 +16,7 @@ const BasketInformation = ({ basket, user }) => {
     createOrder(order)
       .then(order => console.log(order))
       .catch(error => console.log(error));
-    console.log('loggin order', order);
   }
-  console.log('props for basketinfo', user);
 
   const totalQuantity = basket.reduce((sum, item) => sum + item.quantity, 0);
   const totalPriceAmount = basket.reduce((sum, item) => {

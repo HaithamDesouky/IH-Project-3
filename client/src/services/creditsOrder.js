@@ -5,5 +5,5 @@ const api = axios.create({
   withCredentials: true
 });
 
-// export const listCredits = () =>
-//   api.get("/credits/list").then((response) => response.data);
+export const orderCredits = body =>
+  api.post('/credits/buy', body).then(response => response.data);

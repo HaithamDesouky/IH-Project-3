@@ -3,11 +3,9 @@ import React from 'react';
 const LootBox = props => {
   // const { product, basket } = props;
 
-  console.log('props in lootbox', props.basket);
   const { lootBox, basket } = props;
   const existingLootBox = basket.find(item => item.lootBox._id === lootBox._id);
   const quantity = existingLootBox ? existingLootBox.quantity : 0;
-  console.log('props, lootBox');
   return (
     <div key={props.lootBox._id} className="lootbox">
       <h1>{props.lootBox.name}</h1>
