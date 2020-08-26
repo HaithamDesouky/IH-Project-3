@@ -1,12 +1,8 @@
 import React from "react";
 
-<<<<<<< HEAD
-const LootBox = (props) => {
-=======
-import './LootBox.scss';
+import "./LootBox.scss";
 
-const LootBox = props => {
->>>>>>> 7bda6b1b036d6a0b1345e46b26c9a7d7cb33708f
+const LootBox = (props) => {
   // const { product, basket } = props;
 
   const { lootBox, basket } = props;
@@ -14,10 +10,6 @@ const LootBox = props => {
     (item) => item.lootBox._id === lootBox._id
   );
   const quantity = existingLootBox ? existingLootBox.quantity : 0;
-<<<<<<< HEAD
-  console.log("props, lootBox");
-=======
->>>>>>> 7bda6b1b036d6a0b1345e46b26c9a7d7cb33708f
   return (
     <div key={props.lootBox._id} className="lootbox-single">
       <h3>{props.lootBox.name}</h3>

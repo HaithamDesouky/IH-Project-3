@@ -1,17 +1,9 @@
-<<<<<<< HEAD
 import React from "react";
 import { Link } from "react-router-dom";
 import "./nav.scss";
+import { slide as Navbar } from "react-burger-menu";
 
-const Navbar = (props) => {
-=======
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './nav.scss';
-import { slide as Navbar } from 'react-burger-menu';
-
-export default props => {
->>>>>>> 7bda6b1b036d6a0b1345e46b26c9a7d7cb33708f
+export default (props) => {
   return (
     <Navbar {...props}>
       <Link to="/" class="home">

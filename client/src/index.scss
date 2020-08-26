@@ -11,13 +11,13 @@ body {
   line-height: 2;
   margin-left: 3rem;
   background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 1)),
-    url('./views/pattern.jpg');
+    url("./views/pattern.jpg");
   width: 100vw;
   background-position: center; /* Center the image */
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
