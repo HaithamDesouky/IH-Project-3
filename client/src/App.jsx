@@ -16,6 +16,7 @@ import ItemCreationView from './views/Admin/ItemCreationView';
 import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
 import AdminRoute from './components/AdminRoute';
+import OrderView from './views/OrderView';
 
 // import { useHistory } from 'react-router-dom';
 import AllItemsView from './views/Admin/AllItemsView';
@@ -187,6 +188,13 @@ class App extends Component {
                 path="/user/:id"
                 exact
                 component={UserProfile}
+                authorized={this.state.user}
+                redirect="/authentication/sign-in"
+              />
+              <ProtectedRoute
+                path="/order/:id"
+                exact
+                component={OrderView}
                 authorized={this.state.user}
                 redirect="/authentication/sign-in"
               />

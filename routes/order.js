@@ -43,8 +43,19 @@ orderRouter.get('/load', (request, response, next) => {
       model: 'LootBox'
     })
     .then(orders => {
-      console.log(orders);
       response.json({ orders });
+    })
+    .catch(error => {
+      next(error);
+    });
+});
+
+orderRouter.get('/:id', (request, response, next) => {
+  const id = request.params.id;
+  Order.findById(id)
+    .then(order => {
+      console.log('yoo seeing this', order);
+      response.json({ order });
     })
     .catch(error => {
       next(error);
