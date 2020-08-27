@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import "./HomeView.css";
-import game from "./game.png";
-import movie from "./movie.png";
-import clothes from "./clothes.png";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import './HomeView.css';
+import game from './game.png';
+import movie from './movie.png';
+import clothes from './clothes.png';
 // import { listProducts } from '../services/product';
 
 // import ProductItem from '../components/ProductItem';
@@ -13,7 +13,7 @@ class HomeView extends Component {
     super();
     this.state = {
       loaded: true,
-      products: [],
+      products: []
     };
   }
 
@@ -22,7 +22,10 @@ class HomeView extends Component {
       <div className="container">
         <div className="greeting">
           <h1>Today is your lucky day!</h1>
-          <h3>We have many lootboxes for your to try</h3>
+          <h3>
+            In every box you are guaranteed to win items that add to 2 times of
+            the box price
+          </h3>
 
           <Link to="/shop" className="home-links">
             Check out our amazing boxes here

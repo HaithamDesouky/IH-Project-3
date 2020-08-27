@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { listPosts } from '../services/post';
 import PostItem from '../components/Post';
+import './NewsFeed.scss';
 
 class NewsFeed extends Component {
   constructor(props) {
@@ -27,10 +28,15 @@ class NewsFeed extends Component {
 
   render() {
     return (
-      <div className="post-list">
-        {this.state.posts.map(post => (
-          <PostItem {...post} key={post._id} />
-        ))}
+      <div className="newsBox">
+        <div className="post-group">
+          <h1>Share your Loot!</h1>
+          <div className="post-list">
+            {this.state.posts.map(post => (
+              <PostItem {...post} key={post._id} />
+            ))}
+          </div>
+        </div>
       </div>
     );
   }
