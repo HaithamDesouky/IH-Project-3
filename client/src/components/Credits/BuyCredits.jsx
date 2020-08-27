@@ -9,9 +9,11 @@ import {
   ElementsConsumer,
   CardElement
 } from '@stripe/react-stripe-js';
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
-// const notify = () => toast('Congratulations, the payment was successful!');
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+const notify = () =>
+  toast('Congratulations, the payment was successful!', { type: 'success' });
 
 const stripeApiPublicKey =
   'pk_test_516xd9kHBGALjgD8KAhIM9Zlwqwum82KmLf1Bb5KoTDwPSBBMXtLyfOCnztZVS8LWSvv3n1ZHl9GeXgec6WgmUXQK00gNVB5J4i';
@@ -41,6 +43,7 @@ class BuyCredits extends Component {
   handleCheckout = ({ credits, address, token }) => {
     orderCredits({ credits, address, token })
       .then(data => {
+        console.log(data);
         this.props.loadUser();
         this.props.history.push('/');
       })
@@ -112,8 +115,10 @@ class BuyCredits extends Component {
 
                 <label>Enter your credit card details below</label>
                 <CardElement id="stripe" options={cardOptions} />
-
-                <button>Complete Purchase</button>
+                <div>
+                  <button onClick={notify}>Complete Purchase</button>
+                  <ToastContainer />
+                </div>
               </form>
             )}
           </ElementsConsumer>

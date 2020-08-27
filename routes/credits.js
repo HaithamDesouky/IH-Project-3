@@ -26,7 +26,7 @@ creditsRouter.post('/buy', (req, res, next) => {
       });
     })
     .then(charge => {
-      // Create an order document
+      console.log('logging the charge', charge);
       return CreditsOrder.create({
         address,
         credits,

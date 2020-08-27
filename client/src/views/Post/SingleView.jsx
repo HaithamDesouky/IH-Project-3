@@ -12,6 +12,7 @@ class SinglePostView extends Component {
     this.state = {
       loaded: false,
       post: null,
+      sameUser: false,
       comments: [],
       newComment: {
         creator: '',
@@ -37,6 +38,8 @@ class SinglePostView extends Component {
   };
 
   componentDidMount() {
+    console.log(this.props.user);
+
     this.loadData();
   }
 
@@ -74,10 +77,12 @@ class SinglePostView extends Component {
               <img src={post.photo} alt={post.content} id="post-img" />
             )}
             <p>{post.content}</p>
-            <small>{post.creationDate}</small>
-            <Link to={`/post/${this.props.match.params.id}/edit`}>
+            <small> {post.creationDate}</small>
+            {/* <Link to={`/post/${this.props.match.params.id}/edit`}>
               Edit Post
-            </Link>
+            </Link> */}
+
+            <h4>Author: {post.creator.name}</h4>
             <CommentInput
               content={this.state.content}
               onInputChange={this.handleInputChange}

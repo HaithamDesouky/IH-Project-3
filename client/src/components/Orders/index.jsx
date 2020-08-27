@@ -7,13 +7,18 @@ const Order = props => {
   return (
     <Link to={`/order/${props._id}`} className="individual-item">
       <div>
-        <strong>Total Credits: {props.total}</strong>
         <strong>
-          Order:{' '}
-          {props.basket.length &&
-            props.basket.map(
-              item => item.quantity + 'x ' + item.lootBox.name + ' | '
-            )}
+          {' '}
+          <span>Total Credits</span>:{props.total}
+        </strong>
+        <strong>
+          <span>Order</span>:{' '}
+          <ul>
+            {props.basket.length &&
+              props.basket.map(item => {
+                return <li>{item.quantity + 'x ' + item.lootBox.name}</li>;
+              })}
+          </ul>
         </strong>
         {
           /* <p>{description}</p>*/

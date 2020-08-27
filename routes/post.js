@@ -30,12 +30,13 @@ postRouter.get('/:id', async (request, response, next) => {
   const id = request.params.id;
   try {
     const post = await Post.findById(id).populate({
-      path: 'comments',
-      populate: { path: 'creator' }
+      path: 'comments creator',
+      populate: { path: 'creator', model: 'User' }
     });
 
     console.log(post);
     if (post) {
+      console.log(post);
       response.json({ post });
     } else {
       next();

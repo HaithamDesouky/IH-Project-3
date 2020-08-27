@@ -47,12 +47,18 @@ export class UserProfile extends Component {
             )}
             <h1>{this.state.profile.user.name}</h1>
 
+            <h1>
+              {' '}
+              <span>Credits:</span> {this.state.profile.user.credits}
+            </h1>
+
             <h1>Your orders</h1>
+            <br />
+
             {this.state.orders.length &&
               this.state.orders.map(order => {
                 return <Order {...order} key={order._id} />;
               })}
-            <div></div>
           </div>
         )}
       </div>

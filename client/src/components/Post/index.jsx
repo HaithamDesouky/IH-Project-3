@@ -8,10 +8,7 @@ const PostItem = ({ _id, content, creationDate, creator, photo }) => {
       {photo && <img src={photo} alt={content} />}
       <div>
         <strong>{content}</strong>
-        <small>
-          <Link to={`/user/${creator._id}`}> By {creator.name} </Link>
-          {new Date(creationDate).toGMTString()}
-        </small>
+        <small>{new Date(creationDate).toGMTString()}</small>
       </div>
     </Link>
   );

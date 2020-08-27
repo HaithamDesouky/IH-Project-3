@@ -7,3 +7,6 @@ const api = axios.create({
 
 export const orderCredits = body =>
   api.post('/credits/buy', body).then(response => response.data);
+
+export const loadSingleCreditOrder = id =>
+  api.get(`/order/${id}`).then(response => response.data);
