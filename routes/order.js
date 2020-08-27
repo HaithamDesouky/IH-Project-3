@@ -9,6 +9,7 @@ orderRouter.post('/', (request, response, next) => {
   const { user, total, basket, userCredits } = request.body;
 
   const credits = Number(userCredits) - Number(total);
+  let orderObj;
 
   console.log('hey basket', basket);
 
@@ -18,7 +19,7 @@ orderRouter.post('/', (request, response, next) => {
     basket
   })
     .then(data => {
-      console.log(data);
+      orderObj = data;
       User.findByIdAndUpdate(user, {
         credits: credits
       })
@@ -26,7 +27,7 @@ orderRouter.post('/', (request, response, next) => {
         .catch(error => console.log(error));
     })
     .then(order => {
-      response.json({ order });
+      response.json({ order, orderObj });
     })
 
     .catch(error => {
@@ -53,6 +54,14 @@ orderRouter.get('/load', (request, response, next) => {
 orderRouter.get('/:id', (request, response, next) => {
   const id = request.params.id;
   Order.findById(id)
+    .populate({
+      path: 'basket.lootBox',
+      model: 'LootBox'
+    })
+    .populate({
+      path: 'user',
+      model: 'User'
+    })
     .then(order => {
       console.log('yoo seeing this', order);
       response.json({ order });

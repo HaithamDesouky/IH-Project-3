@@ -24,13 +24,7 @@ const schema = new mongoose.Schema(
       type: Number,
       default: 0
     },
-    deliveryAddress: {
-      streetAddress: String,
-      country: String,
-      province: String,
-      city: String,
-      postalCode: { type: Number, min: 0 }
-    },
+    address: String,
     phone: String,
     completedProfile: { type: Boolean, default: false },
     photo: String,

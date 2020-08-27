@@ -15,10 +15,9 @@ const BasketInformation = ({ basket, user, loadUser, history }) => {
     };
     createOrder(order)
       .then(order => {
-        console.log(order);
-        console.log('props', loadUser);
+        console.log('LOGGING THE ID OF THE ORDER', order);
         loadUser();
-        history.push(`/user/${id}`);
+        history.push(`/order/${order.orderObj._id}`);
       })
       .catch(error => console.log(error));
   }

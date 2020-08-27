@@ -12,9 +12,10 @@ const stripe = require('stripe')(
 creditsRouter.post('/buy', (req, res, next) => {
   const { credits, token, address } = req.body;
   const user = req.user;
-
+  console.log('hehehehe', address);
   User.findByIdAndUpdate(user._id, {
-    credits: Number(user.credits) + Number(credits)
+    credits: Number(user.credits) + Number(credits),
+    address
   })
     .then(() => {
       return stripe.charges.create({
@@ -25,7 +26,6 @@ creditsRouter.post('/buy', (req, res, next) => {
       });
     })
     .then(charge => {
-      console.log(charge, 'logging charge');
       // Create an order document
       return CreditsOrder.create({
         address,
