@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./style.scss";
-import defaultPhoto from "./default.png";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './style.scss';
+import defaultPhoto from './default.png';
 
 const Comment = ({ _id, creator, content, createdAt }) => {
   return (
@@ -9,7 +9,7 @@ const Comment = ({ _id, creator, content, createdAt }) => {
       {(creator.photo && <img src={creator.photo} alt={content} />) || (
         <img src={defaultPhoto} alt={content} />
       )}
-      <div>
+      <div className="container-comment">
         <strong>{creator.name}</strong>
         <p>{content}</p>
         <small>{new Date(createdAt).toGMTString()}</small>

@@ -106,7 +106,7 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar user={this.state.user} onSignOut={this.handleSignOut} />
-        <h1>Lootbox App</h1>
+        <h1 className="titleCenter">Lootbox App</h1>
         {(this.state.loaded && (
           <Switch>
             <Route path="/" component={HomeView} exact />

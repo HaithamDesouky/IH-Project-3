@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './style.scss';
-import defaultPhoto from './default.png';
+import React from "react";
+import { Link } from "react-router-dom";
+import "./style.scss";
+import defaultPhoto from "./default.png";
 
 const Item = ({ _id, name, description, photo, itemType }) => {
   return (

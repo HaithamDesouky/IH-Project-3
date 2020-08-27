@@ -7,14 +7,16 @@ import { withRouter } from 'react-router-dom';
 
 import { createOrder } from '../../services/order';
 import LootBox from './../../components/LootBox/LootBox';
+import './CheckoutView.scss';
 
 class CheckoutView extends Component {
   render() {
     const { basket, user } = this.props;
     return (
       <div>
-        <h1>Products in basket</h1>
+        <h1 className="checkout-title">Products in basket</h1>
         <div className="container">
+          <div className="checkout-container"></div>
           {(basket.length &&
             basket.map(item => (
               <LootBox

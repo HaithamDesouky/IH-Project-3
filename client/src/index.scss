@@ -34,6 +34,7 @@ a {
 form {
   display: flex;
   flex-direction: column;
+  margin-left: auto;
   input,
   textarea {
     margin-bottom: 1em;
@@ -75,4 +76,8 @@ h5,
 p,
 a {
   color: white;
+}
+
+.titleCenter {
+  padding-left: 60%;
 }

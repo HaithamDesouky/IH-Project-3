@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { signIn } from './../../services/authentication';
 import './SignUpView.scss';
+import './SignUpView.scss';
 
 class AuthenticationSignInView extends Component {
   constructor() {
@@ -40,6 +41,7 @@ class AuthenticationSignInView extends Component {
   render() {
     return (
       <div className="form-box">
+<<<<<<< HEAD
         <div className="form">
           <h2>Sign In</h2>
           <form
@@ -47,6 +49,11 @@ class AuthenticationSignInView extends Component {
 form-signup"
             onSubmit={this.handleFormSubmission}
           >
+=======
+        <h2 className="signup-title">Sign In</h2>
+        <div className="form">
+          <form className="form-signup" onSubmit={this.handleFormSubmission}>
+>>>>>>> 7b3154f0490778a37a7ae78900badf4ee755b127
             <label htmlFor="input-email"></label>
             <input
               className="form"
@@ -79,7 +86,19 @@ form-signup"
               </div>
             )}
             <div className="buttons">
+<<<<<<< HEAD
               <button class="btn-form">Sign In</button>
+=======
+              <div className="container">
+                <button
+                  class="btn effect04"
+                  data-sm-link-text="CLICK"
+                  target="_blank"
+                >
+                  Sign In
+                </button>
+              </div>
+>>>>>>> 7b3154f0490778a37a7ae78900badf4ee755b127
             </div>
           </form>
         </div>

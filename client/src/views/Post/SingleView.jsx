@@ -4,6 +4,7 @@ import { loadPost } from './../../services/post';
 import CommentInput from '../../components/Post/Comments';
 import { createComment, loadComments } from './../../services/comments';
 import Comments from '../../components/Comments';
+import './SingleView.scss';
 
 class SinglePostView extends Component {
   constructor() {
@@ -66,7 +67,7 @@ class SinglePostView extends Component {
   render() {
     const post = this.state.post;
     return (
-      <div>
+      <div className="singleview-container">
         {(this.state.loaded && (
           <>
             {post.photo && <img src={post.photo} alt={post.content} />}
