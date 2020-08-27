@@ -42,9 +42,9 @@ app.use(
     resave: true,
     saveUninitialized: false,
     cookie: {
-      maxAge: 60 * 60 * 24 * 15,
-      sameSite: 'lax',
-      httpOnly: true
+      maxAge: 60 * 60 * 24 * 15
+      // sameSite: 'lax',
+      // httpOnly: true
       // secure: process.env.NODE_ENV === 'production'
     },
     store: new (connectMongo(expressSession))({
