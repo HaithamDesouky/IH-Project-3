@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { loadPost } from './../../services/post';
 import CommentInput from '../../components/Post/Comments';
-import { createComment, loadComments } from './../../services/comments';
+import { createComment } from './../../services/comments';
 import Comments from '../../components/Comments';
 import './SingleView.scss';
 
@@ -42,7 +42,7 @@ class SinglePostView extends Component {
 
   handleCommentCreation = () => {
     let newComment = this.state.newComment;
-    const id = this.props.match.params.id;
+    // const id = this.props.match.params.id;
     createComment(newComment)
       .then(data => {
         this.loadData();

@@ -23,7 +23,7 @@ class ItemCreationView extends Component {
     createItem(newItem)
       .then(data => {
         const item = data.item;
-        const id = item._id;
+        // const id = item._id;
         // Redirect user to single post view
         this.props.history.push('/admin/items/list');
       })

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import ErrorView from '.././views/ErrorView';
+// import ErrorView from '.././views/ErrorView';
 
 const ProtectedRoute = ({ authorized, redirect, ...props }) => {
   if (authorized) {

@@ -1,11 +1,5 @@
 import React, { Component } from 'react';
-import {
-  BrowserRouter,
-  Switch,
-  Route,
-  Redirect,
-  withRouter
-} from 'react-router-dom';
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { loadMe, signOut } from './services/authentication';
 import NewsFeed from './views/NewsFeed';
 import SinglePostView from './views/Post/SingleView';
@@ -23,7 +17,7 @@ import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
 import AdminRoute from './components/AdminRoute';
 
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import AllItemsView from './views/Admin/AllItemsView';
 import AdminArea from './views/Admin/AdminArea';
 import UserProfile from './views/Social/UserProfile';

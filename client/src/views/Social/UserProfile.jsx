@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { loadUser } from "../../services/user";
-import { loadOrders } from "../../services/order";
-import Order from "../../components/Orders";
-import NavBar from "../../components/Navbar";
-import "./UserProfile.scss";
+import React, { Component } from 'react';
+// import { Link } from "react-router-dom";
+import { loadUser } from '../../services/user';
+import { loadOrders } from '../../services/order';
+import Order from '../../components/Orders';
+// import NavBar from "../../components/Navbar";
+import './UserProfile.scss';
 
 export class UserProfile extends Component {
   constructor() {
@@ -13,25 +13,25 @@ export class UserProfile extends Component {
       user: null,
       profile: null,
       loaded: false,
-      orders: [],
+      orders: []
     };
   }
   componentDidMount() {
     loadUser(this.props.match.params.id)
-      .then((profile) => this.saveProfileToState(profile))
-      .catch((error) => console.log(error));
+      .then(profile => this.saveProfileToState(profile))
+      .catch(error => console.log(error));
 
-    loadOrders().then((data) => {
+    loadOrders().then(data => {
       this.setState({
-        orders: data.orders,
+        orders: data.orders
       });
     });
   }
 
-  saveProfileToState = (profile) => {
+  saveProfileToState = profile => {
     this.setState({
       profile,
-      loaded: true,
+      loaded: true
     });
   };
 
@@ -51,7 +51,7 @@ export class UserProfile extends Component {
 
             <h1>Your orders</h1>
             {this.state.orders.length &&
-              this.state.orders.map((order) => {
+              this.state.orders.map(order => {
                 return <Order {...order} key={order._id} />;
               })}
             <div></div>
