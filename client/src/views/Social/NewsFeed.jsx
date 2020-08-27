@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { listPosts } from '../../services/post';
 import PostItem from '../../components/Post';
+import './social.scss';
 
 class NewsFeed extends Component {
   constructor(props) {
@@ -28,10 +29,13 @@ class NewsFeed extends Component {
 
   render() {
     return (
-      <div className="post-list">
-        {this.state.posts.map(post => (
-          <PostItem {...post} key={post._id} />
-        ))}
+      <div className="newsfeed-container">
+        <h1>Newsfeed</h1>
+        <div className="post-list">
+          {this.state.posts.map(post => (
+            <PostItem {...post} key={post._id} />
+          ))}
+        </div>{' '}
       </div>
     );
   }

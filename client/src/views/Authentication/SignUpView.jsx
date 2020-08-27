@@ -47,8 +47,8 @@ class AuthenticationSignUpView extends Component {
   render() {
     return (
       <div className="form-box">
-        <h2>Sign Up</h2>
         <div className="form">
+          <h2>Sign Up</h2>
           <form className="form-signup" onSubmit={this.handleFormSubmission}>
             <label htmlFor="input-name"></label>
             <input
@@ -82,7 +82,7 @@ class AuthenticationSignUpView extends Component {
               value={this.state.password}
               onChange={this.handleInputChange}
             />
-
+            <label htmlFor="photo">Profile Photo</label>
             <input
               className="form"
               type="file"
@@ -90,15 +90,13 @@ class AuthenticationSignUpView extends Component {
               onChange={this.handlePhotoInputChange}
             />
             <div className="buttons">
-              <div className="container">
-                <button
-                  class="btn effect04"
-                  data-sm-link-text="CLICK"
-                  target="_blank"
-                >
-                  Sign Up
-                </button>
-              </div>
+              <button
+                class="btn-form"
+                data-sm-link-text="CLICK"
+                target="_blank"
+              >
+                Sign Up
+              </button>
             </div>
           </form>
         </div>
