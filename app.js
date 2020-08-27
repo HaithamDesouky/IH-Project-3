@@ -43,14 +43,9 @@ app.use(
     resave: true,
     saveUninitialized: false,
     cookie: {
-<<<<<<< HEAD
       maxAge: 60 * 60 * 24 * 15,
       sameSite: 'none',
       secure: true
-=======
-      maxAge: 60 * 60 * 24 * 15
-      // sameSite: 'lax',
->>>>>>> bc3aeed00fa325db360a7fe565c70e923f6e0c01
       // httpOnly: true
       // secure: process.env.NODE_ENV === 'production'
     },
