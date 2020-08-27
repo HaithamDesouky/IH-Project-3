@@ -34,14 +34,14 @@ class HomeView extends Component {
 
         <div className="second">
           <div className="items">
-            <img src={game} /> Magnetic Katamari Damacy Figure
+            <img src={game} alt="" /> Magnetic Katamari Damacy Figure
           </div>
           <div className="items">
-            <img src={movie} />
+            <img src={movie} alt="" />
             Aliens Pencil Sharpener
           </div>
           <div className="items">
-            <img src={clothes} />
+            <img src={clothes} alt="" />
             Spider-Man T-shirt
           </div>
         </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import ErrorView from '../views/ErrorView';
+// import ErrorView from '../views/ErrorView';
 
 const AdminRoute = ({ authorized, user, redirect, ...props }) => {
   if (authorized) {
@@ -9,7 +9,7 @@ const AdminRoute = ({ authorized, user, redirect, ...props }) => {
     } else {
       return (
         <Redirect
-          to="/"
+          // to="/"
           to={{
             pathname: '/error',
             state: {
@@ -22,7 +22,7 @@ const AdminRoute = ({ authorized, user, redirect, ...props }) => {
   } else {
     return (
       <Redirect
-        to="/"
+        // to="/"
         to={{
           pathname: '/error',
           state: {
