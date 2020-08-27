@@ -47,10 +47,6 @@ class AuthenticationSignUpView extends Component {
   render() {
     return (
       <div className="form-box">
-<<<<<<< HEAD
-=======
-        <h2 className="signup-title">Sign Up</h2>
->>>>>>> 7b3154f0490778a37a7ae78900badf4ee755b127
         <div className="form">
           <h2>Sign Up</h2>
           <form className="form-signup" onSubmit={this.handleFormSubmission}>

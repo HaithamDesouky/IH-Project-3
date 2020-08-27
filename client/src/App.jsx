@@ -106,139 +106,141 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar user={this.state.user} onSignOut={this.handleSignOut} />
-        <h1 className="titleCenter">Lootbox App</h1>
-        {(this.state.loaded && (
-          <Switch>
-            <Route path="/" component={HomeView} exact />
-            <NewsFeed path="/social/newsfeed" exact />
 
-            <AdminRoute
-              path="/admin/items/list"
-              component={AllItemsView}
-              authorized={this.state.user}
-              redirect="/error"
-              exact
-            />
-            <AdminRoute
-              path="/admin/create-item"
-              render={() => <ItemCreationView user={this.state.user} />}
-              authorized={this.state.user}
-              redirect="/error"
-              exact
-            />
-            <AdminRoute
-              path="/admin"
-              render={() => <AdminArea user={this.state.user} />}
-              authorized={this.state.user}
-              redirect="/error"
-              exact
-            />
-            <Route
-              path="/credits"
-              render={props => (
-                <BuyCreditsView
-                  {...props}
-                  loadUser={this.loadUser}
-                  basket={this.state.basket}
-                  onChangeQuantity={this.handleChangeInQuantity}
-                />
-              )}
-            />
-            <ProtectedRoute
-              path="/checkout"
-              render={props => (
-                <CheckoutView
-                  {...props}
-                  user={this.state.user}
-                  loadUser={this.loadUser}
-                  basket={this.state.basket}
-                  onChangeQuantity={this.handleChangeInQuantity}
-                />
-              )}
-              authorized={this.state.user}
-              redirect="/error"
-              exact
-            />
-            <AdminRoute
-              path="/admin/items/list"
-              component={AllItemsView}
-              authorized={this.state.user}
-              redirect="/error"
-              exact
-            />
-            <Route path="/news-feed" component={NewsFeed} exact />
-            {/* <Route path="/shop" component={ShopView} exact /> */}
-            <Route
-              path="/shop"
-              render={props => (
-                <ShopView
-                  classname="Shop"
-                  {...props}
-                  basket={this.state.basket}
-                  onChangeQuantity={this.handleChangeInQuantity}
-                />
-              )}
-              exact
-            />
+        <div className="restOfApp">
+          {(this.state.loaded && (
+            <Switch>
+              <Route path="/" component={HomeView} exact />
+              <NewsFeed path="/social/newsfeed" exact />
 
-            <ProtectedRoute
-              path="/post/create"
-              component={PostCreationView}
-              authorized={this.state.user}
-              redirect="/authentication/sign-in"
-            />
+              <AdminRoute
+                path="/admin/items/list"
+                component={AllItemsView}
+                authorized={this.state.user}
+                redirect="/error"
+                exact
+              />
+              <AdminRoute
+                path="/admin/create-item"
+                render={() => <ItemCreationView user={this.state.user} />}
+                authorized={this.state.user}
+                redirect="/error"
+                exact
+              />
+              <AdminRoute
+                path="/admin"
+                render={() => <AdminArea user={this.state.user} />}
+                authorized={this.state.user}
+                redirect="/error"
+                exact
+              />
+              <Route
+                path="/credits"
+                render={props => (
+                  <BuyCreditsView
+                    {...props}
+                    loadUser={this.loadUser}
+                    basket={this.state.basket}
+                    onChangeQuantity={this.handleChangeInQuantity}
+                  />
+                )}
+              />
+              <ProtectedRoute
+                path="/checkout"
+                render={props => (
+                  <CheckoutView
+                    {...props}
+                    user={this.state.user}
+                    loadUser={this.loadUser}
+                    basket={this.state.basket}
+                    onChangeQuantity={this.handleChangeInQuantity}
+                  />
+                )}
+                authorized={this.state.user}
+                redirect="/error"
+                exact
+              />
+              <AdminRoute
+                path="/admin/items/list"
+                component={AllItemsView}
+                authorized={this.state.user}
+                redirect="/error"
+                exact
+              />
+              <Route path="/news-feed" component={NewsFeed} exact />
+              {/* <Route path="/shop" component={ShopView} exact /> */}
+              <Route
+                path="/shop"
+                render={props => (
+                  <ShopView
+                    classname="Shop"
+                    {...props}
+                    basket={this.state.basket}
+                    onChangeQuantity={this.handleChangeInQuantity}
+                  />
+                )}
+                exact
+              />
 
-            <ProtectedRoute
-              path="/user/:id"
-              exact
-              component={UserProfile}
-              authorized={this.state.user}
-              redirect="/authentication/sign-in"
-            />
-            <ProtectedRoute
-              path="/post/:id/edit"
-              component={PostEditView}
-              authorized={this.state.user}
-              redirect="/authentication/sign-in"
-            />
-            <Route
-              path="/post/:id"
-              render={props => (
-                <SinglePostView {...props} user={this.state.user} />
-              )}
-              exact
-            />
-            <ProtectedRoute
-              path="/authentication/sign-up"
-              render={props => (
-                <AuthenticationSignUpView
-                  {...props}
-                  onUserUpdate={this.handleUserUpdate}
-                />
-              )}
-              authorized={!this.state.user}
-              redirect="/"
-            />
-            <ProtectedRoute
-              path="/authentication/sign-in"
-              render={props => (
-                <AuthenticationSignInView
-                  {...props}
-                  onUserUpdate={this.handleUserUpdate}
-                />
-              )}
-              authorized={!this.state.user}
-              redirect="/"
-            />
-            <Route path="/error" component={ErrorView} />
-            <Redirect from="/" to="/error" />
-            {/* <Route path="/authentication/sign-in" component={AuthenticationSignInView} /> */}
-          </Switch>
-        )) || (
-          <div>
-            <h1>Loading...</h1>
-          </div>
-        )}
+              <ProtectedRoute
+                path="/post/create"
+                component={PostCreationView}
+                authorized={this.state.user}
+                redirect="/authentication/sign-in"
+              />
+
+              <ProtectedRoute
+                path="/user/:id"
+                exact
+                component={UserProfile}
+                authorized={this.state.user}
+                redirect="/authentication/sign-in"
+              />
+              <ProtectedRoute
+                path="/post/:id/edit"
+                component={PostEditView}
+                authorized={this.state.user}
+                redirect="/authentication/sign-in"
+              />
+              <Route
+                path="/post/:id"
+                render={props => (
+                  <SinglePostView {...props} user={this.state.user} />
+                )}
+                exact
+              />
+              <ProtectedRoute
+                path="/authentication/sign-up"
+                render={props => (
+                  <AuthenticationSignUpView
+                    {...props}
+                    onUserUpdate={this.handleUserUpdate}
+                  />
+                )}
+                authorized={!this.state.user}
+                redirect="/"
+              />
+              <ProtectedRoute
+                path="/authentication/sign-in"
+                render={props => (
+                  <AuthenticationSignInView
+                    {...props}
+                    onUserUpdate={this.handleUserUpdate}
+                  />
+                )}
+                authorized={!this.state.user}
+                redirect="/"
+              />
+              <Route path="/error" component={ErrorView} />
+              <Redirect from="/" to="/error" />
+              {/* <Route path="/authentication/sign-in" component={AuthenticationSignInView} /> */}
+            </Switch>
+          )) || (
+            <div>
+              <h1>Loading...</h1>
+            </div>
+          )}
+        </div>
       </div>
     );
   }

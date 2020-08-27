@@ -1,41 +1,41 @@
-import React, { Component } from "react";
-import { listLootBoxes } from "./../../services/shop";
-import LootBox from "../../components/LootBox/LootBox";
+import React, { Component } from 'react';
+import { listLootBoxes } from './../../services/shop';
+import LootBox from '../../components/LootBox/LootBox';
 
-import "./ShopView.scss";
-import { Link } from "react-router-dom";
+import './ShopView.scss';
+import { Link } from 'react-router-dom';
 
 class ShopView extends Component {
   constructor() {
     super();
     this.state = {
       loaded: false,
-      lootBoxes: [],
+      lootBoxes: []
     };
   }
 
   componentDidMount() {
     listLootBoxes()
-      .then((data) => {
+      .then(data => {
         const lootBoxes = data.lootBox;
         this.setState({
           loaded: true,
-          lootBoxes,
+          lootBoxes
         });
         console.log(this.state);
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error);
       });
   }
 
   render() {
     return (
-      <div className="container">
+      <div className="container shop">
         <h1 className="pageName">Choose your LootBox!</h1>
 
         <div className="container">
-          {this.state.lootBoxes.map((lootBox) => (
+          {this.state.lootBoxes.map(lootBox => (
             <LootBox
               key={lootBox._id}
               lootBox={lootBox}

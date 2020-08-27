@@ -9,3 +9,20 @@ h1 {
   flex-wrap: wrap;
   flex-direction: row;
 }
+
+.shop {
+  a {
+    margin: 3rem 0;
+    height: 5rem;
+  }
+}
+
+.pageName {
+  margin-top: 4rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    flex-direction: column;
+  }
+}

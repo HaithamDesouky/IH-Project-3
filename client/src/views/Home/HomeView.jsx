@@ -48,7 +48,7 @@ class HomeView extends Component {
 
         <div className="third">
           <Link to="/social/newsfeed" className="home-links">
-            See what other members have gotten from their lootboxes!
+            See what other members won!
           </Link>
         </div>
       </div>

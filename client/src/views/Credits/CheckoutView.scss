@@ -1,3 +1,10 @@
-.checkout-title {
-  margin-left: 60%;
+.checkout-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  h1 {
+    margin-bottom: 3rem;
+  }
 }
