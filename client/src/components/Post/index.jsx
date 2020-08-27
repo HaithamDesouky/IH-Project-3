@@ -4,7 +4,7 @@ import './style.scss';
 
 const PostItem = ({ _id, content, creationDate, creator, photo }) => {
   return (
-    <Link to={`/post/${_id}`} className="individual-item">
+    <Link to={`/post/${_id}`} className="individual-item news-indiviual">
       {photo && <img src={photo} alt={content} />}
       <div>
         <strong>{content}</strong>

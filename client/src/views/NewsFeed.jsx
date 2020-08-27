@@ -31,7 +31,7 @@ class NewsFeed extends Component {
       <div className="news-container">
         <div className="newsBox">
           <div className="post-group">
-            <h1>Share your Loot!</h1>
+            <h1>Community Loot!</h1>
             <div className="post-list">
               {this.state.posts.map(post => (
                 <PostItem {...post} key={post._id} />

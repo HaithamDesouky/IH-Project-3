@@ -74,3 +74,11 @@ body {
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
 }
+
+#signout {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  border-radius: 8%;
+}

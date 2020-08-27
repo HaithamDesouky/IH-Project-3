@@ -47,7 +47,7 @@ class AuthenticationSignUpView extends Component {
   render() {
     return (
       <div className="form-box">
-        <div className="form">
+        <div className="form-div">
           <h2>Sign Up</h2>
           <form className="form-signup" onSubmit={this.handleFormSubmission}>
             <label htmlFor="input-name"></label>

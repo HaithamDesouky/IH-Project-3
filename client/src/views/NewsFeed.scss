@@ -1,16 +1,16 @@
 .newsBox {
   display: flex;
-  background-color: rgb(31, 31, 31);
-  border: 1px solid #f2f2f2;
+
   box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.5);
   border-radius: 3px;
-  padding: 2rem;
+  padding: 1.2rem;
   margin-top: 5rem;
 
   height: 80%;
 
   h1 {
     margin: 0 auto;
+    font-size: 1.9rem;
   }
 }
 
@@ -37,8 +37,12 @@
   .news-container {
     .individual-item {
       flex-direction: column;
-      width: 100%;
+      width: 70vw;
       margin: 1rem 0;
     }
+  }
+
+  .newsBox {
+    width: 100%;
   }
 }
