@@ -10,3 +10,6 @@ export const createOrder = body =>
 
 export const loadOrders = body =>
   api.get('/order/load', body).then(response => response.data);
+
+export const loadSingleOrder = id =>
+  api.get(`/order/${id}`).then(response => response.data);

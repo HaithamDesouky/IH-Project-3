@@ -46,8 +46,6 @@ export class UserProfile extends Component {
               </div>
             )}
             <h1>{this.state.profile.user.name}</h1>
-            <h2>Followers:{this.state.profile.user.followers.length} </h2>
-            <h2>Posts:{this.state.profile.user.posts.length} </h2>
 
             <h1>Your orders</h1>
             {this.state.orders.length &&

@@ -1,11 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./style.scss";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './style.scss';
 
-const Order = (props) => {
-  console.log("lolol", props);
+const Order = props => {
+  console.log('lolol', props);
   return (
-    <Link to="/" className="individual-item">
+    <Link to={`/order/${props._id}`} className="individual-item">
       <div>
         <strong>Total Credits: {props.total}</strong>
         <strong>
