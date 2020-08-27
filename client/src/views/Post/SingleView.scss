@@ -1,3 +1,40 @@
 .singleview-container {
-  margin-left: 60%;
+  margin-top: 5rem;
+  width: 70%;
+
+  #post-img {
+    margin: 0 auto;
+    display: block;
+  }
+
+  button {
+    background-color: #ff8400;
+  }
+
+  button:hover {
+    background-color: black;
+  }
+  img {
+  }
+
+  small {
+    color: #ff8400;
+  }
+
+  h2 {
+    text-align: center;
+    margin: 2rem 0;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .singleview-container {
+    padding: 3rem;
+    width: 100%;
+
+    .individual-item {
+      display: flex;
+      flex-direction: column;
+    }
+  }
 }

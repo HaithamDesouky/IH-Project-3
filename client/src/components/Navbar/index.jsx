@@ -1,11 +1,14 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./nav.scss";
-import { slide as Navbar } from "react-burger-menu";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './nav.scss';
+import { slide as Navbar } from 'react-burger-menu';
 
-export default (props) => {
+export default props => {
   return (
     <Navbar {...props}>
+      {/* <Link to="/" class="home">
+        IronLootBox
+      </Link> */}
       <Link to="/" class="home">
         Home
       </Link>
@@ -21,7 +24,7 @@ export default (props) => {
           {props.user.admin && <Link to="/admin">Admin</Link>}
           <>
             <Link to={`/user/${props.user._id}`}>{props.user.name}</Link>
-            <button onClick={props.onSignOut}>
+            <button id="signout" onClick={props.onSignOut}>
               <span>Sign Out</span>
             </button>
           </>

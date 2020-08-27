@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-
+  height: 40vh;
   padding: 2rem;
 }
 
@@ -22,11 +22,15 @@
   border-radius: 5px;
 }
 
+.home-links:hover {
+  background-color: black;
+}
+
 .greeting {
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
     url('loot_boxes.jpg');
   width: 100vw;
-  height: 50vh;
+  height: 70vh;
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover;
@@ -35,6 +39,18 @@
   justify-content: center;
   display: flex;
   flex-direction: column;
+
+  h1 {
+    margin-bottom: 1rem;
+    font-size: 4rem;
+  }
+
+  h3 {
+    padding-bottom: 2rem;
+    width: 50%;
+    margin: 0 auto;
+    font-size: 1.3rem;
+  }
 }
 
 .items {
@@ -45,4 +61,28 @@
   justify-content: center;
   display: flex;
   flex-direction: column;
+}
+#lone-link {
+  margin-bottom: 4rem;
+}
+@media only screen and (max-width: 600px) {
+  .greeting {
+    padding: 2rem;
+
+    h1 {
+      font-size: 3rem;
+    }
+
+    h3 {
+      width: 90%;
+    }
+
+    a {
+      width: 70%;
+    }
+  }
+
+  #lone-link {
+    width: 70%;
+  }
 }

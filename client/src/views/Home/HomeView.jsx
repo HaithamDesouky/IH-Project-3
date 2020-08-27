@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import './HomeView.css';
+import './HomeView.scss';
 import game from './game.png';
 import movie from './movie.png';
 import clothes from './clothes.png';
@@ -21,7 +21,7 @@ class HomeView extends Component {
     return (
       <div className="container">
         <div className="greeting">
-          <h1>Today is your lucky day!</h1>
+          <h1>IronLootBox</h1>
           <h3>
             In every box you are guaranteed to win items that add to 2 times of
             the box price
@@ -47,7 +47,7 @@ class HomeView extends Component {
         </div>
 
         <div className="third">
-          <Link to="/social/newsfeed" className="home-links">
+          <Link to="/social/newsfeed" className="home-links" id="lone-link">
             See what other members won!
           </Link>
         </div>

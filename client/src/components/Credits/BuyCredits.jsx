@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { orderCredits } from '../../services/creditsOrder';
 import { withRouter } from 'react-router-dom';
+import './BuyCredits.scss';
 
 import { loadStripe } from '@stripe/stripe-js';
 import {
@@ -85,7 +86,9 @@ class BuyCredits extends Component {
                   this.handleFormSubmission(event, stripe, elements)
                 }
               >
-                <label htmlFor="input-address">Shipping Address</label>
+                <label htmlFor="input-address">
+                  Enter Your Shipping Address
+                </label>
                 <input
                   id="input-address"
                   type="text"
@@ -107,8 +110,8 @@ class BuyCredits extends Component {
                   <option value="2000">Credits: 2000 for €200</option>
                 </select>
 
-                <label>Credit Card details</label>
-                <CardElement options={cardOptions} />
+                <label>Enter your credit card details below</label>
+                <CardElement id="stripe" options={cardOptions} />
 
                 <button>Complete Purchase</button>
               </form>

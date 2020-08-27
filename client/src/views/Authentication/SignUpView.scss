@@ -10,14 +10,23 @@ body {
 }
 .btn-form {
   width: 100%;
+  background-color: #ff8400;
 }
 
 .btn-form:hover {
   width: 100%;
-  background-color: #ff8400;
+  background-color: black;
 }
 
 .form-signup {
   margin: 0 auto;
   width: 50%;
+}
+
+.form-div {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

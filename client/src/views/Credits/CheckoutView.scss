@@ -3,8 +3,20 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
+  height: 90%;
+  button {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+  .lootbox-single {
+    width: 100%;
+  }
   h1 {
     margin-bottom: 3rem;
+    margin-top: 4rem;
+  }
+
+  span {
+    color: #ff8400;
   }
 }

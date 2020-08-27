@@ -33,9 +33,14 @@ const BasketInformation = ({ basket, user, loadUser, history }) => {
   return (
     <div>
       <span>
-        <p>Amount of items: {totalQuantity}</p>
+        <p>
+          {' '}
+          <span>Amount of items</span> : {totalQuantity}
+        </p>
       </span>
-      <p>Total price: {totalPriceAmount} </p>
+      <p>
+        <span>Total price</span>: {totalPriceAmount}{' '}
+      </p>
 
       {user.credits < totalPriceAmount ? (
         <Link to="/buy-credits">

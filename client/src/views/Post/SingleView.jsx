@@ -70,7 +70,9 @@ class SinglePostView extends Component {
       <div className="singleview-container">
         {(this.state.loaded && (
           <>
-            {post.photo && <img src={post.photo} alt={post.content} />}
+            {post.photo && (
+              <img src={post.photo} alt={post.content} id="post-img" />
+            )}
             <p>{post.content}</p>
             <small>{post.creationDate}</small>
             <Link to={`/post/${this.props.match.params.id}/edit`}>
@@ -82,6 +84,7 @@ class SinglePostView extends Component {
               onFormSubmission={this.handleCommentCreation}
             />
 
+            <h2>Comments</h2>
             {this.state.comments.map(eachComment => (
               <Comments {...eachComment} key={eachComment._id} />
             ))}

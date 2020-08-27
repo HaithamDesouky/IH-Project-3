@@ -41,7 +41,7 @@ class AuthenticationSignInView extends Component {
   render() {
     return (
       <div className="form-box">
-        <div className="form">
+        <div className="form-div">
           <h2>Sign In</h2>
           <form
             className="
