@@ -25,10 +25,10 @@ const stripeApiPublicKey =
 const cardOptions = {
   style: {
     base: {
-      fontSize: '16px',
-      color: '#424770',
+      fontSize: '30px',
+      color: 'white',
       fontFamily: 'sans-serif',
-      padding: '16px'
+      padding: '25px'
     },
     invalid: {
       color: '#c23d4b'
@@ -124,7 +124,7 @@ class BuyCredits extends Component {
                 <label>Enter your credit card details below</label>
                 <CardElement id="stripe" options={cardOptions} />
                 <div>
-                  <button>Complete Purchase</button>
+                  <button id="checkout-button">Complete Purchase</button>
                   <ToastContainer />
                 </div>
               </form>

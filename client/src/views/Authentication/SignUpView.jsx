@@ -48,7 +48,7 @@ class AuthenticationSignUpView extends Component {
     return (
       <div className="form-box">
         <div className="form-div">
-          <h2>Sign Up</h2>
+          <h2>Join our community!</h2>
           <form className="form-signup" onSubmit={this.handleFormSubmission}>
             <label htmlFor="input-name"></label>
             <input

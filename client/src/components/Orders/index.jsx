@@ -5,7 +5,10 @@ import './style.scss';
 const Order = props => {
   console.log('lolol', props);
   return (
-    <Link to={`/order/${props._id}`} className="individual-item">
+    <Link
+      to={`/order/${props._id}`}
+      className="individual-item individual-order"
+    >
       <div>
         <strong>
           {' '}

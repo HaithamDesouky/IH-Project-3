@@ -62,10 +62,12 @@ button {
 }
 
 .container {
+  height: 100%;
   width: 100vw;
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin-bottom: 4rem;
 }
 
 h1,

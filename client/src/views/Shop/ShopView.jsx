@@ -43,11 +43,11 @@ class ShopView extends Component {
               basket={this.props.basket}
             />
           ))}
-        </div>
 
-        <Link className="home-links" to="/checkout">
-          Checkout
-        </Link>
+          <Link className="home-links" id="checkout-button" to="/checkout">
+            Checkout
+          </Link>
+        </div>
       </div>
     );
   }

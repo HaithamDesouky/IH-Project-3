@@ -5,6 +5,8 @@ import { loadOrders } from '../../services/order';
 import Order from '../../components/Orders';
 // import NavBar from "../../components/Navbar";
 import './UserProfile.scss';
+import photo from './default.png';
+import { Link } from 'react-router-dom';
 
 export class UserProfile extends Component {
   constructor() {
@@ -40,9 +42,13 @@ export class UserProfile extends Component {
       <div class="profile">
         {this.state.loaded && (
           <div>
-            {this.state.profile.user.photo && (
+            {(this.state.profile.user.photo && (
               <div>
                 <img src={this.state.profile.user.photo} alt="UserPhoto" />
+              </div>
+            )) || (
+              <div>
+                <img src={photo} alt="UserPhoto" />
               </div>
             )}
             <h1>{this.state.profile.user.name}</h1>
@@ -55,10 +61,16 @@ export class UserProfile extends Component {
             <h1>Your orders</h1>
             <br />
 
-            {this.state.orders.length &&
+            {(this.state.orders.length &&
               this.state.orders.map(order => {
                 return <Order {...order} key={order._id} />;
-              })}
+              })) || (
+              <div>
+                {' '}
+                <p>'You have made no orders yet'</p>{' '}
+                <Link to="/buycredits"></Link>
+              </div>
+            )}
           </div>
         )}
       </div>

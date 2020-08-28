@@ -70,7 +70,7 @@ class SinglePostView extends Component {
   render() {
     const post = this.state.post;
     return (
-      <div className="singleview-container">
+      <div className="singleview-container" id="singlepost">
         {(this.state.loaded && (
           <>
             {post.photo && (
