@@ -25,7 +25,7 @@ const stripeApiPublicKey =
 const cardOptions = {
   style: {
     base: {
-      fontSize: '30px',
+      fontSize: '20px',
       color: 'white',
       fontFamily: 'sans-serif',
       padding: '25px'
