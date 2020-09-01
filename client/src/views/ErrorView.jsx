@@ -7,7 +7,7 @@ class ErrorView extends React.Component {
       <div>
         <h1>There was an error</h1>
 
-        <h2>{this.props.location.state.message}</h2>
+        {/* <h2>{this.props.location.state.message}</h2> */}
       </div>
     );
   }
