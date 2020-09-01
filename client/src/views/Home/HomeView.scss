@@ -27,7 +27,8 @@
 }
 
 .greeting {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
+    url('loot_boxes.jpg');
   width: 100vw;
   height: 70vh;
   background-position: center; /* Center the image */

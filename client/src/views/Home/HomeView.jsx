@@ -21,12 +21,10 @@ class HomeView extends Component {
     return (
       <div className="container">
         <div className="greeting">
-          <h1>BandFinder</h1>
+          <h1>IronLootBox</h1>
           <h3>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis
-            explicabo doloremque tenetur odit similique rem provident
-            voluptatibus. Nemo aperiam magni fugit recusandae eum, cumque
-            incidunt, modi consectetur fuga ipsam a.
+            In every box you are guaranteed to win items that add to 2 times of
+            the box price
           </h3>
 
           <Link to="/shop" className="home-links">
